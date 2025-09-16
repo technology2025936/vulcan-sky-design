@@ -12,7 +12,7 @@ const AboutUs = () => {
         <section className="py-20 bg-gradient-hero">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-6">
-              About Vulcan Aviation
+              About Vulcan Aviation test
             </h1>
             <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto">
               Leading flight training academy with over 25 years of excellence in aviation education
