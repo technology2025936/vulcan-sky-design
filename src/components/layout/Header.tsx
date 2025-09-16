@@ -22,17 +22,20 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#about" className="text-aviation-grey hover:text-sky-primary transition-colors">
-              About
+            <a href="/" className="text-aviation-grey hover:text-sky-primary transition-colors">
+              Home
             </a>
-            <a href="#programs" className="text-aviation-grey hover:text-sky-primary transition-colors">
-              Programs
+            <a href="/about-us" className="text-aviation-grey hover:text-sky-primary transition-colors">
+              About Us
             </a>
-            <a href="#instructors" className="text-aviation-grey hover:text-sky-primary transition-colors">
-              Instructors
+            <a href="/courses" className="text-aviation-grey hover:text-sky-primary transition-colors">
+              Courses On Offer
             </a>
-            <a href="#contact" className="text-aviation-grey hover:text-sky-primary transition-colors">
-              Contact
+            <a href="/team" className="text-aviation-grey hover:text-sky-primary transition-colors">
+              Meet The Team
+            </a>
+            <a href="/contact" className="text-aviation-grey hover:text-sky-primary transition-colors">
+              Contact Us
             </a>
             <Button variant="aviation" size="sm">
               Enroll Now
@@ -53,32 +56,39 @@ const Header = () => {
           <nav className="md:hidden mt-4 pb-4 border-t border-border pt-4">
             <div className="flex flex-col space-y-4">
               <a
-                href="#about"
+                href="/"
                 className="text-aviation-grey hover:text-sky-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                About
+                Home
               </a>
               <a
-                href="#programs"
+                href="/about-us"
                 className="text-aviation-grey hover:text-sky-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Programs
+                About Us
               </a>
               <a
-                href="#instructors"
+                href="/courses"
                 className="text-aviation-grey hover:text-sky-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Instructors
+                Courses On Offer
               </a>
               <a
-                href="#contact"
+                href="/team"
                 className="text-aviation-grey hover:text-sky-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Contact
+                Meet The Team
+              </a>
+              <a
+                href="/contact"
+                className="text-aviation-grey hover:text-sky-primary transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact Us
               </a>
               <Button variant="aviation" size="sm" className="w-fit">
                 Enroll Now
