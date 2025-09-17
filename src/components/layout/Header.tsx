@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Plane, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useState } from "react";
+import vulcanLogo from "@/assets/vulcan-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,14 +11,12 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="bg-gradient-hero p-2 rounded-lg">
-              <Plane className="h-6 w-6 text-primary-foreground" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-aviation-grey">Vulcan Aviation</h1>
-              <p className="text-xs text-muted-foreground">Flight Training Academy</p>
-            </div>
+          <div className="flex items-center space-x-3">
+            <img 
+              src={vulcanLogo} 
+              alt="Vulcan Aviation Logo" 
+              className="h-10 w-auto"
+            />
           </div>
 
           {/* Desktop Navigation */}
