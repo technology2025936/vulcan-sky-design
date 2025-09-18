@@ -1,4 +1,5 @@
 import { Plane } from "lucide-react";
+import vulcanLogo from "@/assets/vulcan-logo.png";
 
 const Footer = () => {
   return (
@@ -8,10 +9,12 @@ const Footer = () => {
           <div className="grid md:grid-cols-4 gap-8">
             {/* Logo and Description */}
             <div className="md:col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="bg-gradient-hero p-2 rounded-lg">
-                  <Plane className="h-6 w-6 text-primary-foreground" />
-                </div>
+              <div className="flex items-center space-x-3 mb-4">
+                <img 
+                  src={vulcanLogo} 
+                  alt="Vulcan Aviation Logo" 
+                  className="h-12 w-auto"
+                />
                 <div>
                   <h3 className="text-xl font-bold">Vulcan Aviation</h3>
                   <p className="text-sm text-sky-light">Flight Training Academy</p>
