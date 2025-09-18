@@ -12,7 +12,7 @@ const Hero = () => {
           backgroundImage: `url(${heroImage})`,
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-sky-dark/80 to-sky-primary/40" />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* Content */}
@@ -20,7 +20,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Soar to New
-            <span className="bg-gradient-to-r from-sky-light to-accent bg-clip-text text-transparent block">
+            <span className="block text-white">
               Heights
             </span>
           </h1>
@@ -29,7 +29,7 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button variant="hero" size="lg" className="text-lg px-8 py-4">
+            <Button variant="aviation" size="lg" className="text-lg px-8 py-4">
               Start Your Journey
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
