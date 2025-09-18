@@ -135,7 +135,7 @@ const Programs = () => {
 
           {/* CTA */}
           <div className="text-center mt-16">
-            <div className="bg-gradient-sky p-8 rounded-2xl">
+            <div className="bg-muted p-8 rounded-2xl">
               <h3 className="text-2xl font-bold text-aviation-grey mb-4">
                 Ready to Start Your Aviation Journey?
               </h3>
