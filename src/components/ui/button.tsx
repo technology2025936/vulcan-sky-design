@@ -16,8 +16,10 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         hero: "bg-gradient-hero text-primary-foreground hover:shadow-elevated transition-all duration-300 hover:scale-105",
-        aviation: "bg-sky-primary text-primary-foreground hover:bg-sky-secondary transition-all duration-300 shadow-soft",
-        aviationOutline: "border-2 border-sky-primary text-sky-primary hover:bg-sky-primary hover:text-primary-foreground transition-all duration-300",
+        aviation: "bg-vulcan-red text-primary-foreground hover:bg-vulcan-red-light transition-all duration-300 shadow-soft",
+        aviationOutline: "border-2 border-vulcan-red text-vulcan-red hover:bg-vulcan-red hover:text-primary-foreground transition-all duration-300",
+        vulcan: "bg-vulcan-red text-vulcan-white hover:bg-vulcan-red-light transition-all duration-300 shadow-soft font-semibold",
+        vulcanOutline: "border-2 border-vulcan-red text-vulcan-red hover:bg-vulcan-red hover:text-vulcan-white transition-all duration-300 font-semibold",
       },
       size: {
         default: "h-10 px-4 py-2",

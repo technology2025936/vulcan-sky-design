@@ -47,6 +47,14 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        vulcan: {
+          red: "hsl(var(--vulcan-red))",
+          "red-light": "hsl(var(--vulcan-red-light))",
+          "red-dark": "hsl(var(--vulcan-red-dark))",
+          white: "hsl(var(--vulcan-white))",
+          grey: "hsl(var(--vulcan-grey))",
+          "grey-light": "hsl(var(--vulcan-grey-light))",
+        },
         sky: {
           light: "hsl(var(--sky-light))",
           primary: "hsl(var(--sky-primary))",
@@ -56,6 +64,7 @@ export default {
         aviation: {
           grey: "hsl(var(--aviation-grey))",
           light: "hsl(var(--aviation-light))",
+          red: "hsl(var(--aviation-red))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

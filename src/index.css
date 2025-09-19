@@ -9,49 +9,60 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 210 12% 16%;
+    --foreground: 0 0% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 12% 16%;
+    --card-foreground: 0 0% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 12% 16%;
+    --popover-foreground: 0 0% 15%;
 
-    --primary: 349 87% 45%;
+    --primary: 0 84% 45%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 210 12% 16%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 15%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 349 87% 55%;
+    --accent: 0 84% 45%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 349 87% 45%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 84% 45%;
 
-    /* Aviation-inspired design tokens */
-    --sky-light: 204 100% 97%;
-    --sky-primary: 349 87% 45%;
-    --sky-secondary: 349 87% 55%;
-    --sky-dark: 210 22% 26%;
-    --aviation-grey: 210 12% 16%;
-    --aviation-light: 210 40% 96%;
+    /* Vulcan Red Brand Colors */
+    --vulcan-red: 0 84% 45%;
+    --vulcan-red-light: 0 84% 55%;
+    --vulcan-red-dark: 0 84% 35%;
+    --vulcan-white: 0 0% 100%;
+    --vulcan-grey: 0 0% 15%;
+    --vulcan-grey-light: 0 0% 45%;
+
+    /* Aviation Colors using Vulcan branding */
+    --aviation-grey: 0 0% 15%;
+    --aviation-light: 0 0% 96%;
+    --aviation-red: 0 84% 45%;
+
+    /* Updated Sky colors to match Vulcan theme */
+    --sky-light: 0 0% 90%;
+    --sky-primary: 0 84% 45%;
+    --sky-secondary: 0 84% 55%;
+    --sky-dark: 0 0% 15%;
     
-    /* Gradients */
-    --gradient-sky: linear-gradient(135deg, hsl(var(--sky-light)), hsl(var(--sky-primary)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--sky-primary)), hsl(var(--sky-secondary)));
-    --gradient-subtle: linear-gradient(180deg, hsl(var(--sky-light)), hsl(var(--background)));
+    /* Updated Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--vulcan-red)), hsl(var(--vulcan-red-light)));
+    --gradient-red: linear-gradient(135deg, hsl(var(--vulcan-red) / 0.1), hsl(var(--vulcan-red-light) / 0.1));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
     
-    /* Shadows */
-    --shadow-soft: 0 4px 12px hsl(var(--sky-primary) / 0.15);
-    --shadow-elevated: 0 8px 32px hsl(var(--sky-primary) / 0.2);
+    /* Updated Shadows */
+    --shadow-soft: 0 4px 12px hsl(var(--vulcan-red) / 0.15);
+    --shadow-elevated: 0 8px 32px hsl(var(--vulcan-red) / 0.2);
 
     --radius: 0.5rem;
 
