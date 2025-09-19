@@ -17,84 +17,38 @@ const Hero = () => {
 
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
-          {/* Left Content */}
-          <div className="text-white space-y-8">
+        <div className="flex items-center justify-center min-h-[80vh]">
+          {/* Centered Content */}
+          <div className="text-white space-y-8 text-center max-w-4xl">
             {/* Welcome Badge */}
-            <div className="inline-flex items-center border border-white/30 rounded-full px-4 py-2 text-sm font-medium">
+            <div className="inline-flex items-center border border-white/30 rounded-full px-6 py-3 text-sm font-medium">
               WELCOME TO VULCAN
             </div>
 
             {/* Main Heading */}
-            <div className="space-y-4">
-              <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+            <div className="space-y-6">
+              <h1 className="text-5xl lg:text-6xl xl:text-8xl font-bold leading-tight">
                 Where Elite Pilots
                 <span className="block">Are Born Not Made</span>
               </h1>
-              <p className="text-xl lg:text-2xl text-white/90 max-w-2xl leading-relaxed">
-                We craft exceptional aviators with world-class training unmatched discipline and passion to conquer skies with skill and confidence.
+              <p className="text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+                We craft exceptional aviators with world-class training, unmatched discipline and passion to conquer skies with skill and confidence.
               </p>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="vulcan" size="lg" className="text-lg px-8 py-4">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button variant="vulcan" size="lg" className="text-lg px-10 py-4">
                 Start Training
               </Button>
               <Button 
                 variant="ghost" 
                 size="lg" 
-                className="text-lg px-8 py-4 text-white hover:bg-white/10 border border-white/30"
+                className="text-lg px-10 py-4 text-white hover:bg-white/10 border border-white/30"
               >
                 <Play className="mr-2 h-5 w-5" />
                 Watch Video
               </Button>
-            </div>
-          </div>
-
-          {/* Right Content - Training Cards */}
-          <div className="space-y-6">
-            <div className="grid gap-4">
-              {/* Training Simulators */}
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
-                <div className="flex items-center space-x-4">
-                  <div className="bg-vulcan-red p-3 rounded-xl">
-                    <Target className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-semibold text-lg">Cockpit Training Simulator</h3>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
-                <div className="flex items-center space-x-4">
-                  <div className="bg-vulcan-red p-3 rounded-xl">
-                    <Settings className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-semibold text-lg">Cabin Training Simulator</h3>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
-                <div className="flex items-center space-x-4">
-                  <div className="bg-vulcan-red p-3 rounded-xl">
-                    <Plane className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-semibold text-lg">Full Flight Training</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Text */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
-              <p className="text-white/80 text-sm leading-relaxed mb-4">
-                Soar above expectations with world-class training and unmatched flight experiences for future aviation professionals.
-              </p>
             </div>
           </div>
         </div>
