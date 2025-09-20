@@ -1,161 +1,100 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { GraduationCap, Plane, MapPin, Clock } from "lucide-react";
+import { Plane, Trophy, BookOpen, Navigation, ArrowRight, Star } from "lucide-react";
 
 const Programs = () => {
   const programs = [
     {
-      title: "Private Pilot License (PPL)",
-      duration: "6-12 months",
-      flightHours: "40+ hours",
-      description: "Begin your aviation journey with our comprehensive private pilot program. Learn fundamental flying skills in a supportive environment.",
-      features: [
-        "Ground school instruction",
-        "Dual flight training",
-        "Solo flight preparation",
-        "Check ride preparation",
-        "Navigation training"
-      ],
-      icon: GraduationCap,
-      popular: false
+      id: 1,
+      title: "Private Pilot License",
+      description: "Foundation training for aspiring aviators.",
+      icon: Plane
     },
     {
-      title: "Commercial Pilot License (CPL)",
-      duration: "12-18 months",
-      flightHours: "250+ hours",
-      description: "Advance your skills to professional standards and prepare for a career in aviation with our commercial pilot program.",
-      features: [
-        "Advanced flight maneuvers",
-        "Complex aircraft training",
-        "Commercial regulations",
-        "Cross-country flights",
-        "Professional standards"
-      ],
-      icon: Plane,
-      popular: true
+      id: 2,
+      title: "Commercial Pilot License", 
+      description: "Advanced skills for professional pilots.",
+      icon: Trophy
     },
     {
-      title: "Instrument Rating (IR)",
-      duration: "3-6 months",
-      flightHours: "40+ hours",
-      description: "Master instrument flying and weather navigation to become a safer, more capable pilot in all conditions.",
-      features: [
-        "Instrument procedures",
-        "Weather interpretation",
-        "IFR flight planning",
-        "Approach procedures",
-        "Emergency procedures"
-      ],
-      icon: MapPin,
-      popular: false
+      id: 3,
+      title: "Instrument Flight Rating",
+      description: "Master precise navigation in any weather.",
+      icon: Navigation
+    },
+    {
+      id: 4,
+      title: "Flight Instructor Course",
+      description: "Fly advanced complex twin engine aircraft.",
+      icon: BookOpen
     }
   ];
 
   return (
-    <section id="programs" className="py-24 bg-muted/30">
+    <section id="programs" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center border border-vulcan-red/20 rounded-full px-6 py-2 text-sm font-medium text-vulcan-red mb-6">
-              TRAINING PROGRAMS
+        {/* Header */}
+        <div className="flex justify-between items-start mb-16">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 bg-vulcan-red/10 text-vulcan-red px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <Star className="w-4 h-4" />
+              AVIA PROGRAMS
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-              Professional Flight
-              <span className="block text-vulcan-red">Training Programs</span>
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground leading-tight">
+              Experience The Power Of Flight
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Choose from our comprehensive range of flight training programs, each designed 
-              to meet your specific aviation goals and experience level with industry-leading instruction.
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Our programs deliver hands-on training, advanced simulation, and expert mentorship to help you master every aspect of flying.
             </p>
           </div>
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="hidden lg:flex border-2 border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
+          >
+            MORE PROGRAMS
+          </Button>
+        </div>
 
-          {/* Programs Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {programs.map((program, index) => (
-              <Card 
-                key={index} 
-                className={`relative border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 ${
-                  program.popular ? 'ring-2 ring-vulcan-red shadow-vulcan-red/20' : ''
-                }`}
-              >
-                {program.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-vulcan-red text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                
-                <CardHeader className="text-center pb-6 pt-8">
-                  <div className="bg-vulcan-red p-4 rounded-xl w-20 h-20 mx-auto mb-6 flex items-center justify-center shadow-lg">
-                    <program.icon className="h-10 w-10 text-white" />
-                  </div>
-                  <CardTitle className="text-2xl font-bold text-foreground">
-                    {program.title}
-                  </CardTitle>
-                </CardHeader>
-
-                <CardContent className="space-y-6 px-8 pb-8">
-                  <p className="text-muted-foreground text-center leading-relaxed">
-                    {program.description}
-                  </p>
-
-                  <div className="grid grid-cols-2 gap-4 text-center">
-                    <div className="bg-muted/50 p-4 rounded-xl">
-                      <Clock className="h-6 w-6 text-vulcan-red mx-auto mb-2" />
-                      <div className="text-sm font-bold text-foreground">{program.duration}</div>
-                      <div className="text-xs text-muted-foreground">Duration</div>
-                    </div>
-                    <div className="bg-muted/50 p-4 rounded-xl">
-                      <Plane className="h-6 w-6 text-vulcan-red mx-auto mb-2" />
-                      <div className="text-sm font-bold text-foreground">{program.flightHours}</div>
-                      <div className="text-xs text-muted-foreground">Flight Hours</div>
+        {/* Programs Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {programs.map((program) => {
+            const IconComponent = program.icon;
+            return (
+              <Card key={program.id} className="group relative overflow-hidden bg-white border-2 border-gray-100 hover:border-vulcan-red/30 transition-all duration-500 hover:shadow-xl rounded-3xl">
+                <div className="relative">
+                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                    <div className="absolute bottom-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform duration-300">
+                      <ArrowRight className="w-6 h-6 text-white" />
                     </div>
                   </div>
-
-                  <div className="space-y-3">
-                    <h4 className="font-bold text-foreground">Program Includes:</h4>
-                    <ul className="space-y-2">
-                      {program.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="text-sm text-muted-foreground flex items-center">
-                          <div className="w-2 h-2 bg-vulcan-red rounded-full mr-3 flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
+                  
+                  <div className="p-8">
+                    <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-vulcan-red transition-colors duration-300">
+                      {program.title}
+                    </h3>
+                    
+                    <p className="text-muted-foreground leading-relaxed">
+                      {program.description}
+                    </p>
                   </div>
-
-                  <Button 
-                    variant={program.popular ? "vulcan" : "outline"} 
-                    className="w-full py-6 text-lg font-semibold"
-                  >
-                    Learn More
-                  </Button>
-                </CardContent>
+                </div>
               </Card>
-            ))}
-          </div>
+            );
+          })}
+        </div>
 
-          {/* CTA */}
-          <div className="text-center mt-20">
-            <div className="bg-gradient-to-r from-vulcan-red to-vulcan-red/90 p-12 rounded-3xl text-white shadow-2xl">
-              <h3 className="text-3xl md:text-4xl font-bold mb-6">
-                Ready to Start Your Aviation Journey?
-              </h3>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Contact us today to schedule a discovery flight and take the first step 
-                toward your pilot's license with our expert instructors.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="outline" size="lg" className="bg-white text-vulcan-red border-white hover:bg-white/90 px-8 py-4 text-lg font-semibold">
-                  Schedule Discovery Flight
-                </Button>
-                <Button variant="ghost" size="lg" className="text-white hover:bg-white/10 border border-white/30 px-8 py-4 text-lg font-semibold">
-                  View All Programs
-                </Button>
-              </div>
-            </div>
+        {/* Call to Action */}
+        <div className="text-center">
+          <div className="flex items-center justify-center gap-4 text-muted-foreground mb-4">
+            <span>Your Aviation Career Starts Here</span>
+            <Button 
+              className="bg-vulcan-red hover:bg-vulcan-red/90 text-white font-semibold px-8 py-3 rounded-full flex items-center gap-2 group"
+            >
+              REGISTER NOW
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+            </Button>
           </div>
         </div>
       </div>
