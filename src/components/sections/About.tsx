@@ -6,7 +6,7 @@ import pilotImage from "@/assets/hero-pilot-woman.jpg";
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-sky-dark text-white relative overflow-hidden">
+    <section id="about" className="py-24 bg-white text-foreground relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyIi8+PC9nPjwvZz48L3N2Zz4=')] repeat"></div>
@@ -29,9 +29,9 @@ const About = () => {
               </div>
               
               {/* Testimonial Card */}
-              <div className="bg-sky-dark/50 backdrop-blur-sm border border-vulcan-red/20 rounded-2xl p-8">
+              <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8">
                 <Quote className="h-12 w-12 text-vulcan-red mb-6" />
-                <blockquote className="text-lg italic text-white/90 mb-6 leading-relaxed">
+                <blockquote className="text-lg italic text-muted-foreground mb-6 leading-relaxed">
                   "A great pilot is not born from talent alone but from discipline, persistence and an unshakable passion for the skies."
                 </blockquote>
                 <div className="text-vulcan-red font-semibold">
@@ -48,8 +48,8 @@ const About = () => {
               <div className="text-center lg:text-left">
                 <div className="text-6xl md:text-8xl font-bold text-vulcan-red mb-2">25+</div>
                 <div className="border-l-4 border-vulcan-red pl-6">
-                  <div className="text-xl font-bold text-white mb-1">YEARS OF AVIATION</div>
-                  <div className="text-xl font-bold text-white">EXCELLENCE</div>
+                  <div className="text-xl font-bold text-foreground mb-1">YEARS OF AVIATION</div>
+                  <div className="text-xl font-bold text-foreground">EXCELLENCE</div>
                 </div>
               </div>
               
@@ -80,19 +80,19 @@ const About = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-vulcan-red mb-2">2000+</div>
-                  <div className="text-sm text-white/80">Pilots Trained</div>
+                  <div className="text-sm text-muted-foreground">Pilots Trained</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-vulcan-red mb-2">50K+</div>
-                  <div className="text-sm text-white/80">Flight Hours</div>
+                  <div className="text-sm text-muted-foreground">Flight Hours</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-vulcan-red mb-2">98%</div>
-                  <div className="text-sm text-white/80">Pass Rate</div>
+                  <div className="text-sm text-muted-foreground">Pass Rate</div>
                 </div>
               </div>
               
-              <p className="text-lg text-white/80 mb-8 leading-relaxed">
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 With expert instructors and advanced resources, we equip aspiring pilots with skills and confidence to thrive in aviation careers worldwide.
               </p>
               
@@ -125,13 +125,13 @@ const About = () => {
                 description: "Accelerated and traditional programs designed to fit your schedule and career goals."
               }
             ].map((feature, index) => (
-              <Card key={index} className="bg-sky-dark/50 border-vulcan-red/20 backdrop-blur-sm hover:bg-sky-dark/70 transition-all duration-300">
+              <Card key={index} className="bg-gray-50 border-gray-200 hover:bg-gray-100 transition-all duration-300">
                 <CardContent className="p-8 text-center">
                   <div className="bg-vulcan-red/20 p-4 rounded-xl inline-flex mb-6">
                     <feature.icon className="h-8 w-8 text-vulcan-red" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-4">{feature.title}</h3>
-                  <p className="text-white/70 leading-relaxed">{feature.description}</p>
+                  <h3 className="text-xl font-bold text-foreground mb-4">{feature.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
