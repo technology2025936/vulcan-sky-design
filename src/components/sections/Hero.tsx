@@ -1,17 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Play, Phone, Target, Settings, Plane } from "lucide-react";
 import heroImage from "@/assets/hero-pilot-woman.jpg";
-
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
+  return <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
       {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-        }}
-      >
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `url(${heroImage})`
+    }}>
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
       </div>
 
@@ -41,11 +36,7 @@ const Hero = () => {
               <Button variant="vulcan" size="lg" className="text-lg px-10 py-4">
                 Start Training
               </Button>
-              <Button 
-                variant="ghost" 
-                size="lg" 
-                className="text-lg px-10 py-4 text-white hover:bg-white/10 border border-white/30"
-              >
+              <Button variant="ghost" size="lg" className="text-lg px-10 py-4 text-white hover:bg-white/10 border border-white/30">
                 <Play className="mr-2 h-5 w-5" />
                 Watch Video
               </Button>
@@ -54,27 +45,8 @@ const Hero = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-12 border-t border-white/20">
-          <div className="text-center text-white">
-            <div className="text-4xl font-bold mb-2">50k+</div>
-            <div className="text-white/80 text-sm">Flight Hours Completed</div>
-          </div>
-          <div className="text-center text-white">
-            <div className="text-4xl font-bold mb-2">2k</div>
-            <div className="text-white/80 text-sm">Certified Pilots Trained</div>
-          </div>
-          <div className="text-center text-white">
-            <div className="text-4xl font-bold mb-2">25+</div>
-            <div className="text-white/80 text-sm">State-of-the-Art Aircraft</div>
-          </div>
-          <div className="text-center text-white">
-            <div className="text-4xl font-bold mb-2">100%</div>
-            <div className="text-white/80 text-sm">Success Rate</div>
-          </div>
-        </div>
+        
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
