@@ -20,9 +20,9 @@ const About = () => {
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
                 <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
-                  Your Trusted Pathway To
-                  <span className="block text-vulcan-red">Excellence In Professional</span>
-                  <span className="block">Pilot Careers</span>
+                  Experience The Power Of Flight
+                  <span className="block text-vulcan-red">Where Dreams Take Wing And</span>
+                  <span className="block">Careers Soar High</span>
                 </h1>
               </div>
               
