@@ -3,10 +3,8 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, Quote, Plane, Users, Clock } from "lucide-react";
 import heroImage from "@/assets/aviation-hero.jpg";
 import pilotImage from "@/assets/hero-pilot-woman.jpg";
-
 const About = () => {
-  return (
-    <section id="about" className="py-24 bg-white text-foreground relative overflow-hidden">
+  return <section id="about" className="py-24 bg-white text-foreground relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyIi8+PC9nPjwvZz48L3N2Zz4=')] repeat"></div>
@@ -56,11 +54,7 @@ const About = () => {
               {/* Aircraft Image */}
               <div className="relative">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden">
-                  <img 
-                    src={heroImage} 
-                    alt="Training aircraft on runway" 
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={heroImage} alt="Training aircraft on runway" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
@@ -69,11 +63,7 @@ const About = () => {
             <div className="lg:col-span-7">
               <div className="relative mb-8">
                 <div className="aspect-[3/2] rounded-2xl overflow-hidden">
-                  <img 
-                    src={pilotImage} 
-                    alt="Professional pilots in aircraft cockpit" 
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={pilotImage} alt="Professional pilots in aircraft cockpit" className="w-full h-full object-cover" />
                 </div>
               </div>
               
@@ -96,50 +86,16 @@ const About = () => {
                 With expert instructors and advanced resources, we equip aspiring pilots with skills and confidence to thrive in aviation careers worldwide.
               </p>
               
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-vulcan-red text-vulcan-red hover:bg-vulcan-red hover:text-white bg-transparent px-8 py-4 text-lg font-semibold"
-              >
+              <Button variant="outline" size="lg" className="border-vulcan-red text-vulcan-red hover:bg-vulcan-red hover:text-white bg-transparent px-8 py-4 text-lg font-semibold">
                 READ MORE
               </Button>
             </div>
           </div>
 
           {/* Additional Features Section */}
-          <div className="grid md:grid-cols-3 gap-8 mt-20">
-            {[
-              {
-                icon: Plane,
-                title: "Modern Fleet",
-                description: "State-of-the-art Cessna and Piper aircraft equipped with the latest avionics and safety systems."
-              },
-              {
-                icon: Users,
-                title: "Expert Instructors",
-                description: "FAA-certified instructors with 10,000+ flight hours and commercial airline experience."
-              },
-              {
-                icon: Clock,
-                title: "Flexible Training",
-                description: "Accelerated and traditional programs designed to fit your schedule and career goals."
-              }
-            ].map((feature, index) => (
-              <Card key={index} className="bg-gray-50 border-gray-200 hover:bg-gray-100 transition-all duration-300">
-                <CardContent className="p-8 text-center">
-                  <div className="bg-vulcan-red/20 p-4 rounded-xl inline-flex mb-6">
-                    <feature.icon className="h-8 w-8 text-vulcan-red" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-4">{feature.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
