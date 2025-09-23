@@ -3,37 +3,29 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-
 const Contact = () => {
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: "Phone",
-      details: "+1 (555) 123-VULCAN",
-      subtitle: "+1 (555) 123-8852"
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      details: "info@vulcanaviation.com",
-      subtitle: "training@vulcanaviation.com"
-    },
-    {
-      icon: MapPin,
-      title: "Address",
-      details: "123 Aviation Drive",
-      subtitle: "Sky Harbor, AZ 85001"
-    },
-    {
-      icon: Clock,
-      title: "Hours",
-      details: "Monday - Friday: 7AM - 7PM",
-      subtitle: "Saturday: 8AM - 5PM"
-    }
-  ];
-
-  return (
-    <section id="contact" className="py-24 bg-white">
+  const contactInfo = [{
+    icon: Phone,
+    title: "Phone",
+    details: "+1 (555) 123-VULCAN",
+    subtitle: "+1 (555) 123-8852"
+  }, {
+    icon: Mail,
+    title: "Email",
+    details: "info@vulcanaviation.com",
+    subtitle: "training@vulcanaviation.com"
+  }, {
+    icon: MapPin,
+    title: "Address",
+    details: "123 Aviation Drive",
+    subtitle: "Sky Harbor, AZ 85001"
+  }, {
+    icon: Clock,
+    title: "Hours",
+    details: "Monday - Friday: 7AM - 7PM",
+    subtitle: "Saturday: 8AM - 5PM"
+  }];
+  return <section id="contact" className="py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -59,8 +51,7 @@ const Contact = () => {
                   Contact Information
                 </h3>
                 <div className="grid gap-6">
-                  {contactInfo.map((info, index) => (
-                    <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  {contactInfo.map((info, index) => <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                       <CardContent className="p-6">
                         <div className="flex items-start space-x-4">
                           <div className="bg-vulcan-red p-3 rounded-xl">
@@ -79,22 +70,12 @@ const Contact = () => {
                           </div>
                         </div>
                       </CardContent>
-                    </Card>
-                  ))}
+                    </Card>)}
                 </div>
               </div>
 
               {/* Facility Info */}
-              <div className="bg-muted/50 rounded-2xl p-8 text-center">
-                <MapPin className="h-16 w-16 text-vulcan-red mx-auto mb-6" />
-                <h4 className="text-2xl font-bold text-foreground mb-4">
-                  Visit Our Facility
-                </h4>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  Located at Sky Harbor with easy access to training airspace and modern facilities. 
-                  Come see our fleet and meet our instructors.
-                </p>
-              </div>
+              
             </div>
 
             {/* Contact Form */}
@@ -150,10 +131,7 @@ const Contact = () => {
                     <label className="block text-sm font-medium text-aviation-grey mb-2">
                       Message
                     </label>
-                    <Textarea 
-                      placeholder="Tell us about your aviation goals and any questions you have..."
-                      rows={4}
-                    />
+                    <Textarea placeholder="Tell us about your aviation goals and any questions you have..." rows={4} />
                   </div>
                   
                   <Button variant="vulcan" size="lg" className="w-full py-6 text-lg font-semibold">
@@ -165,8 +143,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
