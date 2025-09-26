@@ -1,5 +1,6 @@
 import { CheckCircle, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import whychoose from "@/assets/why choose.jpg";
 
 const WhyChooseAvia = () => {
   const features = [
@@ -35,7 +36,7 @@ const WhyChooseAvia = () => {
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="/api/placeholder/600/450" 
+                  src={whychoose} 
                   alt="Professional pilot operating aircraft controls in modern cockpit"
                   className="w-full h-full object-cover"
                 />
