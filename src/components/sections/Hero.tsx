@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Play, Phone, Target, Settings, Plane } from "lucide-react";
-import heroImage from "@/assets/hero-pilot-woman.jpg";
+// import heroImage from "@/assets/hero-pilot-woman.jpg";
+import banner from "@/assets/banner.png"
+
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
       {/* Background Image */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-      backgroundImage: `url(${heroImage})`
+      backgroundImage: `url(${banner})`
     }}>
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
       </div>
