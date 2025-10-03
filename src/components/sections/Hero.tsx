@@ -9,7 +9,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
       backgroundImage: `url(${banner})`
     }}>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/40 to-transparent" />
       </div>
 
       {/* Main Content */}
@@ -18,19 +18,19 @@ const Hero = () => {
           {/* Centered Content */}
           <div className="text-white space-y-8 text-center max-w-4xl">
             {/* Welcome Badge */}
-            <div className="inline-flex items-center border border-white/30 rounded-full px-6 py-3 text-sm font-medium">
+            {/* <div className="inline-flex items-center border border-white/30 rounded-full px-6 py-3 text-sm font-medium">
               WELCOME TO VULCAN
-            </div>
+            </div> */}
 
             {/* Main Heading */}
             <div className="space-y-6">
-              <h1 className="text-5xl lg:text-6xl xl:text-8xl font-bold leading-tight">
-                Where Elite Pilots
-                <span className="block">Are Born Not Made</span>
+              <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+              Pilot Training at Lanseria Fly with Vulcan
+                {/* <span className="block">Are Born Not Made</span> */}
               </h1>
-              <p className="text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                We craft exceptional aviators with world-class training, unmatched discipline and passion to conquer skies with skill and confidence.
-              </p>
+              {/* <p className="text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              Train at Lanseria International Airport and gain the skills and confidence to succeed in aviation.
+              </p> */}
             </div>
 
             {/* CTA Buttons */}
@@ -38,10 +38,16 @@ const Hero = () => {
               <Button variant="vulcan" size="lg" className="text-lg px-10 py-4">
                 Start Training
               </Button>
-              <Button variant="ghost" size="lg" className="text-lg px-10 py-4 text-white hover:bg-white/10 border border-white/30">
-                <Play className="mr-2 h-5 w-5" />
-                Watch Video
-              </Button>
+              <a href="https://www.youtube.com/watch?v=UnHtfW5A9dA" target="_blank" rel="noopener noreferrer">
+  <Button
+    variant="ghost"
+    size="lg"
+    className="text-lg px-10 py-4 text-white hover:bg-white/10 border border-white/30"
+  >
+    <Play className="mr-2 h-5 w-5" />
+    Watch Video
+  </Button>
+</a>
             </div>
           </div>
         </div>

@@ -23,7 +23,7 @@ const Header = () => {
               <img
                 src={vulcanLogo}
                 alt="Vulcan Aviation Logo"
-                className="h-20 w-auto"
+                className="h-[4rem] w-auto"
               />
             </Link>
           </div>

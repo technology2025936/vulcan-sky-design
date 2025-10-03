@@ -6,23 +6,25 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 const Contact = () => {
   const contactInfo = [{
     icon: Phone,
-    title: "Phone",
-    details: "+1 (555) 123-VULCAN",
-    subtitle: "+1 (555) 123-8852"
+    
+    title: "Office: +27 87 265 7150",
+    subtitle: "After Hours/Emergency: +27 72 081 8608",
+    subtitle2: "Indian Office: +91 76005 34733"
   }, {
     icon: Mail,
-    title: "Email",
-    details: "info@vulcanaviation.com",
-    subtitle: "training@vulcanaviation.com"
+    title: "For course/training estimates, email to:",
+    details2: "enquiries@flyvulcan.co.za",
+    title2: "For Indian nationals (DGCA), email to:",
+    details2: "admissions@flyvulcan.in"
   }, {
     icon: MapPin,
     title: "Address",
-    details: "123 Aviation Drive",
-    subtitle: "Sky Harbor, AZ 85001"
+    details2: "3rd Floor, Hangar 10, Gate 5 Lanseria International Airport South Africa 1748",
+    
   }, {
     icon: Clock,
     title: "Hours",
-    details: "Monday - Friday: 7AM - 7PM",
+    details2: "Monday - Friday: 7AM - 7PM",
     subtitle: "Saturday: 8AM - 5PM"
   }];
   return <section id="contact" className="py-24 bg-white">
@@ -61,12 +63,21 @@ const Contact = () => {
                             <h4 className="font-bold text-foreground mb-2 text-lg">
                               {info.title}
                             </h4>
-                            <p className="text-muted-foreground font-medium">
+                            <h4 className="font-bold text-foreground mb-2 text-lg">
                               {info.details}
-                            </p>
-                            <p className="text-muted-foreground">
+                            </h4>
+                            <h4 className="font-600 text-foreground mb-2 text-lg">
                               {info.subtitle}
-                            </p>
+                            </h4>
+                            <h4 className="font-600 text-foreground mb-2 text-lg">
+                              {info.title2}
+                            </h4>
+                            <h4 className="font-600 text-foreground mb-2 text-lg">
+                              {info.details2}
+                            </h4>
+                            <h4 className="font-600 text-foreground mb-2 text-lg">
+                              {info.subtitle2}
+                            </h4>
                           </div>
                         </div>
                       </CardContent>

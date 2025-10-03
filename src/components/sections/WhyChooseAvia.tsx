@@ -47,20 +47,20 @@ const WhyChooseAvia = () => {
             </div>
 
             {/* Right Column - Content */}
-            <div className="space-y-8">
+            <div className="space-y-1">
               {/* Header */}
               <div>
                 <div className="inline-flex items-center border border-vulcan-red/30 rounded-full px-6 py-2 text-sm font-medium text-vulcan-red mb-6 bg-vulcan-red/10">
                   WHY CHOOSE AVIA
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-foreground">
-                  Building Wings For
-                  <span className="block text-vulcan-red">Aviation Leaders</span>
+                Pilot Training 
+                  <span className="block text-vulcan-red">Lanseria, South Africa</span>
                 </h2>
               </div>
 
               {/* Features List */}
-              <div className="space-y-6">
+              {/* <div className="space-y-6">
                 {features.map((feature, index) => (
                   <div key={index} className="flex items-start gap-4 group">
                     <div className="flex-shrink-0 mt-1">
@@ -78,22 +78,37 @@ const WhyChooseAvia = () => {
                     </div>
                   </div>
                 ))}
-              </div>
+              </div> */}
 
               {/* Description */}
               <p className="text-lg text-muted-foreground leading-relaxed">
-                We equip aspiring pilots with the vision, discipline and skills needed to soar above the rest in aviation.
+              Looking for the best Pilot Training at Lanseria, South Africa?
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+              Vulcan Aviation (ATO CAA 1575) has a team of highly qualified flight instructors and exemplary pilot training facilities.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+              Based at Lanseria International Airport in Johannesburg South Africa, we are proud to offer you a world-class pilot training experience at Lanseria South Africa.
               </p>
 
+              <p className="text-lg text-muted-foreground leading-relaxed">
+              We offer an array of Pilot courses ranging from Private Pilot Licence (PPL) through to Airline Transport Pilot Licence (ATPL).
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+              Lanseria International Airport has many advantages for the student as it operates 24/7. The airspace surrounding Lanseria experiences a vast amount of air traffic, promoting enhanced situational awareness and a higher degree of confidence for your pilot training.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+              Students can look forward to training courses structured to your budget. We are offering one of the most cost-effective solutions to get you airborne.
+              </p>
               {/* CTA Button */}
-              <Button 
+              {/* <Button 
                 variant="outline" 
                 size="lg" 
                 className="border-vulcan-red text-vulcan-red hover:bg-vulcan-red hover:text-white bg-transparent px-8 py-4 text-lg font-semibold group"
               >
                 LEARN MORE ABOUT US
                 <ArrowUpRight className="ml-2 h-5 w-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <About />
+        {/* <About /> */}
         <WhyChooseAvia />
         <Programs />
         <Contact />

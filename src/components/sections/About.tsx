@@ -47,7 +47,7 @@ const About = () => {
           <div className="lg:col-span-5 space-y-8">
             {/* Large Stat */}
             <div className="text-center lg:text-left">
-              <div className="text-6xl md:text-8xl font-bold text-vulcan-red mb-2">5+</div>
+              <div className="text-6xl md:text-8xl font-bold text-vulcan-red mb-2">10+</div>
               <div className="border-l-4 border-vulcan-red pl-6">
                 <div className="text-xl font-bold text-foreground mb-1">YEARS OF AVIATION</div>
                 <div className="text-xl font-bold text-foreground">EXCELLENCE</div>
