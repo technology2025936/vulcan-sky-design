@@ -7,59 +7,14 @@ import { Award, Clock, Plane, Star } from "lucide-react";
 const MeetTheTeam = () => {
   const team = [
     {
-      name: "Captain Sarah Mitchell",
-      role: "Chief Flight Instructor",
-      experience: "15,000+ hours",
-      certifications: ["ATPL", "CFI", "CFII", "MEI"],
-      specialties: ["Commercial Training", "Instrument Rating", "Multi-Engine"],
-      bio: "Former airline captain with 20 years of experience. Passionate about training the next generation of professional pilots.",
+      name: "Mr Kiron Hanuman",
+      role: "Director & Co-Founder",
+      experience: ["Airline Instructor","Involved in ab-initio flight and ground training at Vulcan Aviation"],
+      certifications: ["Airline Transport Pilot License (ATPL) with multiple Type Rating endorsements",],
+      specialties: ["Instructor Rating", "Airline Transport Pilot License (ATPL)", "Type Rating endorsements:","Airbus A320/340", "B737 Classic/NG", "Piper Seneca (PA34)", "Cessna Series", " Piper Series", "Diamond DA20"],
+      bio: "Highly experienced aviation professional with over 11,300 flying hours",
       image: "/placeholder.svg"
     },
-    {
-      name: "Captain James Rodriguez",
-      role: "Senior Flight Instructor",
-      experience: "12,000+ hours",
-      certifications: ["ATPL", "CFI", "CFII"],
-      specialties: ["Private Pilot", "Commercial Training", "Safety Training"],
-      bio: "Military veteran and experienced instructor with expertise in safety protocols and emergency procedures.",
-      image: "/placeholder.svg"
-    },
-    {
-      name: "Captain Lisa Chen",
-      role: "Instrument Flight Instructor",
-      experience: "8,500+ hours",
-      certifications: ["CPL", "CFII", "MEI"],
-      specialties: ["Instrument Rating", "IFR Procedures", "Weather Training"],
-      bio: "Specialist in instrument training with extensive knowledge of weather systems and IFR operations.",
-      image: "/placeholder.svg"
-    },
-    {
-      name: "Captain Michael Thompson",
-      role: "Multi-Engine Instructor",
-      experience: "10,000+ hours",
-      certifications: ["ATPL", "CFI", "MEI"],
-      specialties: ["Multi-Engine", "Complex Aircraft", "Performance Training"],
-      bio: "Expert in multi-engine aircraft operations and complex systems training for advanced students.",
-      image: "/placeholder.svg"
-    },
-    {
-      name: "Captain Emma Davis",
-      role: "Ground School Instructor",
-      experience: "6,000+ hours",
-      certifications: ["CPL", "CFI", "IGI"],
-      specialties: ["Ground School", "Aerodynamics", "Navigation"],
-      bio: "Dedicated ground instructor with a talent for making complex aviation concepts easy to understand.",
-      image: "/placeholder.svg"
-    },
-    {
-      name: "Captain Robert Wilson",
-      role: "Flight Safety Officer",
-      experience: "18,000+ hours",
-      certifications: ["ATPL", "CFI", "Safety Officer"],
-      specialties: ["Safety Management", "Risk Assessment", "Emergency Procedures"],
-      bio: "Aviation safety expert ensuring all training meets the highest safety standards and regulations.",
-      image: "/placeholder.svg"
-    }
   ];
 
   return (
@@ -139,7 +94,7 @@ const MeetTheTeam = () => {
                       </div>
                       
                       <div>
-                        <p className="text-sm font-semibold mb-2">Specialties:</p>
+                        <p className="text-sm font-semibold mb-2">Licenses & Ratings:</p>
                         <div className="flex flex-wrap gap-1">
                           {member.specialties.map((specialty, specialtyIndex) => (
                             <Badge key={specialtyIndex} variant="outline" className="text-xs">

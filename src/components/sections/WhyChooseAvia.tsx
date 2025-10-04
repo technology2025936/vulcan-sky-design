@@ -51,7 +51,7 @@ const WhyChooseAvia = () => {
               {/* Header */}
               <div>
                 <div className="inline-flex items-center border border-vulcan-red/30 rounded-full px-6 py-2 text-sm font-medium text-vulcan-red mb-6 bg-vulcan-red/10">
-                  WHY CHOOSE AVIA
+                  WHY CHOOSE VULCAN AVIATION
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-foreground">
                 Pilot Training 

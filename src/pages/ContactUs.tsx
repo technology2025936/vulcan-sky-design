@@ -90,11 +90,9 @@ const ContactUs = () => {
                   <Phone className="h-8 w-8 text-sky-primary mx-auto mb-4" />
                   <CardTitle className="text-lg mb-2">Phone</CardTitle>
                   <CardDescription>
-                    Main: (555) 123-FLIGHT
+                    +91 866 0164381
                     <br />
-                    Training: (555) 123-4567
-                    <br />
-                    Emergency: (555) 999-0000
+                    +27 71 113 7209
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -104,11 +102,7 @@ const ContactUs = () => {
                   <Mail className="h-8 w-8 text-sky-primary mx-auto mb-4" />
                   <CardTitle className="text-lg mb-2">Email</CardTitle>
                   <CardDescription>
-                    info@vulcanaviation.com
-                    <br />
-                    training@vulcanaviation.com
-                    <br />
-                    support@vulcanaviation.com
+                   Enquires@flyvulcan.co.za
                   </CardDescription>
                 </CardContent>
               </Card>

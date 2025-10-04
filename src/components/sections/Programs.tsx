@@ -1,43 +1,40 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Plane, Trophy, BookOpen, Navigation, ArrowRight, Star } from "lucide-react";
+import { Plane, Trophy, BookOpen, Navigation, ArrowRight, Star, } from "lucide-react";
 import whychoose from "@/assets/why choose.jpg";
 import test from "@/assets/test3.jpg"
 import testone from "@/assets/cardtest.jpg"
 import testtwo from "@/assets/instrument.jpg"
 import testthree from "@/assets/cardtestsecond.jpg"
+import { Link } from "react-router-dom";
 
 
 const Programs = () => {
   const programs = [
     {
       id: 1,
-      title: "Private Pilot License",
-      description: "Foundation training for aspiring aviators.",
+      title: "Single-Engine Instrument CPL (Commercial Pilot Licence)",
+      description: "Build a professional flying career with solid single-engine flight training under instrument conditions across India and South Africa.",
       icon: Plane, 
-      image: test
+      image: test,
+      slug: "single-engine"
     },
     {
       id: 2,
-      title: "Commercial Pilot License", 
-      description: "Advanced skills for professional pilots.",
+      title: "Multi-Engine Instrument CPL (Commercial Pilot Licence)", 
+      description: "Train for professional aviation with advanced multi-engine handling, instrument rating, and CPL flight test at Lanseria International Airport.",
       icon: Trophy,
-      image: testone
+      image: testone,
+      slug: "multi-engine"
     },
     {
       id: 3,
-      title: "Instrument Flight Rating",
-      description: "Master precise navigation in any weather.",
+      title: "Commercial Pilot License (CPL)",
+      description: "Aviakul’s flagship CPL program designed for aspiring pilots who want to fly for airlines, corporates, or charter operations.",
       icon: Navigation,
-      image: testtwo
+      image: testtwo,
+      slug: "commercial-pilot"
     },
-    {
-      id: 4,
-      title: "Flight Instructor Course",
-      description: "Fly advanced complex twin engine aircraft.",
-      icon: BookOpen,
-      image: testthree
-    }
   ];
 
   return (
@@ -48,7 +45,7 @@ const Programs = () => {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-vulcan-red/10 text-vulcan-red px-4 py-2 rounded-full text-sm font-medium mb-6">
               <Star className="w-4 h-4" />
-              AVIA PROGRAMS
+              AVIATION PROGRAMS
             </div>
             <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground leading-tight">
               Experience The Power Of Flight
@@ -57,17 +54,17 @@ const Programs = () => {
               Our programs deliver hands-on training, advanced simulation, and expert mentorship to help you master every aspect of flying.
             </p>
           </div>
-          <Button 
+          {/* <Button 
             variant="outline" 
             size="lg" 
             className="hidden lg:flex border-2 border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
           >
             MORE PROGRAMS
-          </Button>
+          </Button> */}
         </div>
 
         {/* Programs Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
   {programs.map((program) => {
     const IconComponent = program.icon;
     return (
@@ -80,9 +77,13 @@ const Programs = () => {
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            
             <div className="absolute bottom-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform duration-300">
+              <Link to={`/${program.slug}`}>
               <ArrowRight className="w-6 h-6 text-white" />
+              </Link>
             </div>
+            
           </div>
           
           <div className="p-8">
