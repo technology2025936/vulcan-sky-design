@@ -1,6 +1,15 @@
+"use client";
+
+import { useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,6 +17,39 @@ import { Label } from "@/components/ui/label";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 
 const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    dob: "",
+    height: "",
+    education: "",
+    licence: "",
+    medical: "",
+    english: "",
+    careerGoal: "",
+    citizenship: "",
+  });
+
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e: any) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+      await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Error submitting form:", err);
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -19,7 +61,8 @@ const ContactUs = () => {
               Contact Vulcan Aviation
             </h1>
             <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto">
-              Ready to start your aviation journey? Get in touch with our team today
+              Ready to start your aviation journey? Get in touch with our team
+              today
             </p>
           </div>
         </section>
@@ -33,44 +76,52 @@ const ContactUs = () => {
                   <MapPin className="h-8 w-8 text-sky-primary mx-auto mb-4" />
                   <CardTitle className="text-lg mb-2">Location</CardTitle>
                   <CardDescription>
-                    1234 Aviation Drive<br />
-                    Sky Harbor Airport<br />
+                    1234 Aviation Drive
+                    <br />
+                    Sky Harbor Airport
+                    <br />
                     Phoenix, AZ 85034
                   </CardDescription>
                 </CardContent>
               </Card>
-              
+
               <Card className="text-center">
                 <CardContent className="pt-6">
                   <Phone className="h-8 w-8 text-sky-primary mx-auto mb-4" />
                   <CardTitle className="text-lg mb-2">Phone</CardTitle>
                   <CardDescription>
-                    Main: (555) 123-FLIGHT<br />
-                    Training: (555) 123-4567<br />
+                    Main: (555) 123-FLIGHT
+                    <br />
+                    Training: (555) 123-4567
+                    <br />
                     Emergency: (555) 999-0000
                   </CardDescription>
                 </CardContent>
               </Card>
-              
+
               <Card className="text-center">
                 <CardContent className="pt-6">
                   <Mail className="h-8 w-8 text-sky-primary mx-auto mb-4" />
                   <CardTitle className="text-lg mb-2">Email</CardTitle>
                   <CardDescription>
-                    info@vulcanaviation.com<br />
-                    training@vulcanaviation.com<br />
+                    info@vulcanaviation.com
+                    <br />
+                    training@vulcanaviation.com
+                    <br />
                     support@vulcanaviation.com
                   </CardDescription>
                 </CardContent>
               </Card>
-              
+
               <Card className="text-center">
                 <CardContent className="pt-6">
                   <Clock className="h-8 w-8 text-sky-primary mx-auto mb-4" />
                   <CardTitle className="text-lg mb-2">Hours</CardTitle>
                   <CardDescription>
-                    Mon-Fri: 7:00 AM - 7:00 PM<br />
-                    Saturday: 8:00 AM - 5:00 PM<br />
+                    Mon-Fri: 7:00 AM - 7:00 PM
+                    <br />
+                    Saturday: 8:00 AM - 5:00 PM
+                    <br />
                     Sunday: 9:00 AM - 4:00 PM
                   </CardDescription>
                 </CardContent>
@@ -78,65 +129,161 @@ const ContactUs = () => {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-12">
-              {/* Contact Form */}
+              {/* Questionnaire Form */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-2xl text-aviation-grey">Send us a Message</CardTitle>
+                  <CardTitle className="text-2xl text-aviation-grey">
+                    Aviation Enquiry Questionnaire
+                  </CardTitle>
                   <CardDescription>
-                    Fill out the form below and we'll get back to you within 24 hours
+                    Please fill out all the questions below. Our admissions team
+                    will reach out to you within 24 hours.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-4">
+                  {submitted ? (
+                    <div className="p-8 text-center bg-muted rounded-lg">
+                      <h3 className="text-2xl font-semibold text-sky-primary mb-2">
+                        Thank You!
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Your details have been submitted successfully. Our team
+                        will contact you soon.
+                      </p>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="space-y-2">
-                        <Label htmlFor="firstName">First Name</Label>
-                        <Input id="firstName" placeholder="Enter your first name" />
+                        <Label htmlFor="fullName">
+                          What is your full name (as per passport/ID)?
+                        </Label>
+                        <Input
+                          id="fullName"
+                          placeholder="Enter your full name"
+                          value={formData.fullName}
+                          onChange={handleChange}
+                        />
                       </div>
+
                       <div className="space-y-2">
-                        <Label htmlFor="lastName">Last Name</Label>
-                        <Input id="lastName" placeholder="Enter your last name" />
+                        <Label htmlFor="dob">
+                          What is your date of birth?
+                        </Label>
+                        <Input
+                          id="dob"
+                          type="date"
+                          value={formData.dob}
+                          onChange={handleChange}
+                        />
                       </div>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" placeholder="Enter your email address" />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number</Label>
-                      <Input id="phone" type="tel" placeholder="Enter your phone number" />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="interest">Program of Interest</Label>
-                      <select className="w-full p-3 border border-input rounded-lg bg-background">
-                        <option value="">Select a program</option>
-                        <option value="ppl">Private Pilot License (PPL)</option>
-                        <option value="cpl">Commercial Pilot License (CPL)</option>
-                        <option value="ir">Instrument Rating (IR)</option>
-                        <option value="cfi">Flight Instructor (CFI)</option>
-                        <option value="mei">Multi-Engine Rating</option>
-                        <option value="atpl">Airline Transport Pilot (ATPL)</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea 
-                        id="message" 
-                        placeholder="Tell us about your aviation goals and any questions you have"
-                        rows={5}
-                      />
-                    </div>
-                    
-                    <Button variant="aviation" size="lg" className="w-full">
-                      <Send className="h-4 w-4 mr-2" />
-                      Send Message
-                    </Button>
-                  </form>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="height">
+                          What is your current height? (Minimum requirement:
+                          155 cm)
+                        </Label>
+                        <Input
+                          id="height"
+                          placeholder="Enter your height in cm"
+                          value={formData.height}
+                          onChange={handleChange}
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="education">
+                          What is your highest completed level of education?
+                        </Label>
+                        <Input
+                          id="education"
+                          placeholder="Enter your qualification"
+                          value={formData.education}
+                          onChange={handleChange}
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="licence">
+                          Do you currently hold any pilot licence or aviation
+                          experience? If yes, please specify.
+                        </Label>
+                        <Textarea
+                          id="licence"
+                          placeholder="Enter details of your licence or experience"
+                          value={formData.licence}
+                          onChange={handleChange}
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="medical">
+                          Have you completed a Class 1 or Class 2 Aviation
+                          Medical?
+                        </Label>
+                        <select
+                          id="medical"
+                          className="w-full p-3 border border-input rounded-lg bg-background"
+                          value={formData.medical}
+                          onChange={handleChange}
+                        >
+                          <option value="">Select option</option>
+                          <option value="Class 1">Class 1</option>
+                          <option value="Class 2">Class 2</option>
+                          <option value="Not Completed">Not Completed</option>
+                        </select>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="english">
+                          What is your level of English proficiency
+                          (speaking, reading, writing)?
+                        </Label>
+                        <Input
+                          id="english"
+                          placeholder="Example: Fluent / Intermediate / Basic"
+                          value={formData.english}
+                          onChange={handleChange}
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="careerGoal">
+                          What is your career goal in aviation (airline
+                          pilot, charter, instructor, etc.)?
+                        </Label>
+                        <Textarea
+                          id="careerGoal"
+                          placeholder="Describe your career goal"
+                          value={formData.careerGoal}
+                          onChange={handleChange}
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="citizenship">
+                          Are you a South African citizen or an international
+                          applicant? If international, what is your country of
+                          origin?
+                        </Label>
+                        <Input
+                          id="citizenship"
+                          placeholder="Enter your citizenship or country"
+                          value={formData.citizenship}
+                          onChange={handleChange}
+                        />
+                      </div>
+
+                      <Button
+                        variant="aviation"
+                        size="lg"
+                        className="w-full"
+                        type="submit"
+                      >
+                        <Send className="h-4 w-4 mr-2" />
+                        Submit Form
+                      </Button>
+                    </form>
+                  )}
                 </CardContent>
               </Card>
 
@@ -144,26 +291,39 @@ const ContactUs = () => {
               <div className="space-y-8">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-aviation-grey">Visit Our Facility</CardTitle>
+                    <CardTitle className="text-aviation-grey">
+                      Visit Our Facility
+                    </CardTitle>
                     <CardDescription>
-                      Located at Sky Harbor Airport with easy access to runways and modern training facilities
+                      Located at Sky Harbor Airport with easy access to runways
+                      and modern training facilities
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="aspect-video bg-gradient-subtle rounded-lg flex items-center justify-center mb-6">
                       <div className="text-center">
                         <MapPin className="h-12 w-12 text-sky-primary mx-auto mb-4" />
-                        <p className="text-muted-foreground">Interactive Map Coming Soon</p>
+                        <p className="text-muted-foreground">
+                          Interactive Map Coming Soon
+                        </p>
                       </div>
                     </div>
                     <div className="space-y-4">
                       <div>
-                        <h4 className="font-semibold text-aviation-grey mb-2">Parking</h4>
-                        <p className="text-muted-foreground text-sm">Free parking available in our dedicated lot</p>
+                        <h4 className="font-semibold text-aviation-grey mb-2">
+                          Parking
+                        </h4>
+                        <p className="text-muted-foreground text-sm">
+                          Free parking available in our dedicated lot
+                        </p>
                       </div>
                       <div>
-                        <h4 className="font-semibold text-aviation-grey mb-2">Public Transport</h4>
-                        <p className="text-muted-foreground text-sm">Accessible via Sky Harbor shuttle and bus routes</p>
+                        <h4 className="font-semibold text-aviation-grey mb-2">
+                          Public Transport
+                        </h4>
+                        <p className="text-muted-foreground text-sm">
+                          Accessible via Sky Harbor shuttle and bus routes
+                        </p>
                       </div>
                     </div>
                   </CardContent>
@@ -171,24 +331,34 @@ const ContactUs = () => {
 
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-aviation-grey">Quick Links</CardTitle>
+                    <CardTitle className="text-aviation-grey">
+                      Quick Links
+                    </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex justify-between items-center p-3 border rounded-lg">
                       <span>Schedule a Discovery Flight</span>
-                      <Button variant="outline" size="sm">Book Now</Button>
+                      <Button variant="outline" size="sm">
+                        Book Now
+                      </Button>
                     </div>
                     <div className="flex justify-between items-center p-3 border rounded-lg">
                       <span>Download Course Brochure</span>
-                      <Button variant="outline" size="sm">Download</Button>
+                      <Button variant="outline" size="sm">
+                        Download
+                      </Button>
                     </div>
                     <div className="flex justify-between items-center p-3 border rounded-lg">
                       <span>Schedule Campus Tour</span>
-                      <Button variant="outline" size="sm">Tour</Button>
+                      <Button variant="outline" size="sm">
+                        Tour
+                      </Button>
                     </div>
                     <div className="flex justify-between items-center p-3 border rounded-lg">
                       <span>Financial Aid Information</span>
-                      <Button variant="outline" size="sm">Learn More</Button>
+                      <Button variant="outline" size="sm">
+                        Learn More
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -206,48 +376,60 @@ const ContactUs = () => {
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg text-sky-primary">How long does pilot training take?</CardTitle>
+                  <CardTitle className="text-lg text-sky-primary">
+                    How long does pilot training take?
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription>
-                    Training duration varies by license type. PPL typically takes 8-12 weeks, 
-                    while commercial training can take 16-20 weeks depending on your schedule and weather conditions.
+                    Training duration varies by license type. PPL typically
+                    takes 8-12 weeks, while commercial training can take 16-20
+                    weeks depending on your schedule and weather conditions.
                   </CardDescription>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg text-sky-primary">What are the medical requirements?</CardTitle>
+                  <CardTitle className="text-lg text-sky-primary">
+                    What are the medical requirements?
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription>
-                    You'll need an FAA medical certificate. For private pilots, a 3rd class medical is sufficient. 
-                    Commercial pilots require a 1st or 2nd class medical certificate.
+                    You'll need an FAA medical certificate. For private pilots,
+                    a 3rd class medical is sufficient. Commercial pilots require
+                    a 1st or 2nd class medical certificate.
                   </CardDescription>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg text-sky-primary">Do you offer financing options?</CardTitle>
+                  <CardTitle className="text-lg text-sky-primary">
+                    Do you offer financing options?
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription>
-                    Yes, we offer various financing options including payment plans, student loans, 
-                    and partnerships with financial institutions to make training more accessible.
+                    Yes, we offer various financing options including payment
+                    plans, student loans, and partnerships with financial
+                    institutions to make training more accessible.
                   </CardDescription>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg text-sky-primary">Can I train part-time?</CardTitle>
+                  <CardTitle className="text-lg text-sky-primary">
+                    Can I train part-time?
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription>
-                    Absolutely! We offer flexible scheduling to accommodate work and personal commitments. 
-                    Part-time training typically takes longer but allows you to maintain your current lifestyle.
+                    Absolutely! We offer flexible scheduling to accommodate work
+                    and personal commitments. Part-time training typically takes
+                    longer but allows you to maintain your current lifestyle.
                   </CardDescription>
                 </CardContent>
               </Card>

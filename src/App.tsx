@@ -9,6 +9,9 @@ import CoursesOnOffer from "./pages/CoursesOnOffer";
 import MeetTheTeam from "./pages/MeetTheTeam";
 import ContactUs from "./pages/ContactUs";
 import NotFound from "./pages/NotFound";
+import SingleEngineCPL from "./pages/singleEnginecpl";
+import MultiEngineCPL from "./pages/multiEnginecpl";
+import CommercialPilotLicense from "./pages/commercialPilotLicense";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +27,9 @@ const App = () => (
           <Route path="/courses" element={<CoursesOnOffer />} />
           <Route path="/team" element={<MeetTheTeam />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/single-engine" element={<SingleEngineCPL />} />
+          <Route path="/multi-engine" element={<MultiEngineCPL/>} />
+          <Route path="/commercial-pilot" element={<CommercialPilotLicense/>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

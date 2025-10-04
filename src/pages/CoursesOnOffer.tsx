@@ -1,175 +1,166 @@
+"use client";
+
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Clock, Users, Award, Plane } from "lucide-react";
+import { Plane, Award } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CoursesOnOffer = () => {
   const courses = [
     {
-      title: "Private Pilot License (PPL)",
-      description: "Your first step into aviation. Learn the fundamentals of flight in a comprehensive program designed for beginners.",
-      duration: "8-12 weeks",
+      title: "Single-Engine Instrument CPL (Commercial Pilot Licence)",
+      slug: "single-engine",
+      description:
+        "Build a professional flying career with solid single-engine flight training under instrument conditions across India and South Africa.",
+      duration: "12–14 months",
       students: "1-on-1",
-      price: "From $12,000",
-      features: ["40 hours flight time", "Ground school included", "Written & practical exams", "Night flying training"],
-      level: "Beginner",
-      icon: <Plane className="h-6 w-6" />
+      price: "From $24,000",
+      level: "Professional",
+      features: [
+        "Ground School (India) + Flight Training (SA)",
+        "PPL, Night, & Instrument Rating",
+        "Visa & Accommodation Assistance",
+        "Lanseria International Airport exposure",
+      ],
+      icon: <Plane className="h-5 w-5 text-vulcan-red" />,
+    },
+    {
+      title: "Multi-Engine Instrument CPL (Commercial Pilot Licence)",
+      slug: "multi-engine",
+      description:
+        "Train for professional aviation with advanced multi-engine handling, instrument rating, and CPL flight test at Lanseria International Airport.",
+      duration: "12–14 months",
+      students: "1-on-1",
+      price: "From $27,000",
+      level: "Professional",
+      features: [
+        "Multi-engine Piper Seneca training",
+        "Rustenburg + Lanseria stages",
+        "Night & Instrument Rating (Multi)",
+        "International exposure",
+      ],
+      icon: <Plane className="h-5 w-5 text-vulcan-red" />,
     },
     {
       title: "Commercial Pilot License (CPL)",
-      description: "Advanced training for aspiring professional pilots. Master complex aircraft systems and commercial operations.",
-      duration: "16-20 weeks",
-      students: "1-on-1",
-      price: "From $25,000",
-      features: ["250 hours flight time", "Complex aircraft training", "Instrument rating included", "Multi-engine certification"],
-      level: "Advanced",
-      icon: <Award className="h-6 w-6" />
-    },
-    {
-      title: "Instrument Rating (IR)",
-      description: "Learn to fly safely in challenging weather conditions using only aircraft instruments.",
-      duration: "6-8 weeks",
-      students: "1-on-1",
-      price: "From $8,500",
-      features: ["40 hours instrument time", "IFR procedures", "Weather training", "Safety protocols"],
-      level: "Intermediate",
-      icon: <Clock className="h-6 w-6" />
-    },
-    {
-      title: "Flight Instructor (CFI)",
-      description: "Become a certified flight instructor and share your passion for aviation with future pilots.",
-      duration: "10-12 weeks",
+      slug: "commercial-pilot",
+      description:
+        "Aviakul’s flagship CPL program designed for aspiring pilots who want to fly for airlines, corporates, or charter operations.",
+      duration: "10–12 months",
       students: "Small groups",
-      price: "From $18,000",
-      features: ["Teaching methodology", "Flight instruction techniques", "Ground instructor rating", "CFI checkride prep"],
-      level: "Expert",
-      icon: <Users className="h-6 w-6" />
-    },
-    {
-      title: "Multi-Engine Rating",
-      description: "Expand your capabilities with multi-engine aircraft certification and advanced procedures.",
-      duration: "3-4 weeks",
-      students: "1-on-1",
-      price: "From $6,500",
-      features: ["Twin-engine aircraft", "Engine failure procedures", "Complex systems training", "Performance calculations"],
-      level: "Advanced",
-      icon: <Plane className="h-6 w-6" />
-    },
-    {
-      title: "Airline Transport Pilot (ATPL)",
-      description: "The highest level of pilot certification. Prepare for airline and corporate aviation careers.",
-      duration: "20-24 weeks",
-      students: "Small groups",
-      price: "From $35,000",
-      features: ["1,500 hours experience", "Airline procedures", "CRM training", "Type rating preparation"],
+      price: "From ₹32,00,000",
       level: "Professional",
-      icon: <Award className="h-6 w-6" />
-    }
+      features: [
+        "DGCA Ground School (India)",
+        "200+ Flying Hours",
+        "Radio Telephony + SPL/FRTOL exams",
+        "Day & Night flight operations",
+      ],
+      icon: <Award className="h-5 w-5 text-vulcan-red" />,
+    },
   ];
 
-  const getLevelColor = (level: string) => {
-    switch (level) {
-      case "Beginner": return "bg-green-100 text-green-800";
-      case "Intermediate": return "bg-blue-100 text-blue-800";
-      case "Advanced": return "bg-orange-100 text-orange-800";
-      case "Expert": return "bg-red-100 text-red-800";
-      case "Professional": return "bg-purple-100 text-purple-800";
-      default: return "bg-gray-100 text-gray-800";
-    }
-  };
-
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-50">
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-hero">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-6">
-              Flight Training Courses
+            <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-4">
+              Flight Training Programmes
             </h1>
-            <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto">
-              Comprehensive flight training programs designed to take you from your first flight to professional pilot
+            <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">
+              Explore structured aviation pathways with Aviakul (India) and Vulcan Aviation (South Africa)
             </p>
           </div>
         </section>
 
-        {/* Courses Grid */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {courses.map((course, index) => (
-                <Card key={index} className="relative overflow-hidden hover:shadow-elegant transition-all duration-300">
-                  <CardHeader>
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="text-sky-primary">
-                        {course.icon}
-                      </div>
-                      <Badge className={getLevelColor(course.level)}>
-                        {course.level}
-                      </Badge>
+        {/* Courses Section */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {courses.map((course, i) => (
+              <Card
+                key={i}
+                className="border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-xl overflow-hidden"
+              >
+                {/* Card Header */}
+                <CardHeader className="p-6 pb-3">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="bg-vulcan-red/10 p-2 rounded-md">
+                      {course.icon}
                     </div>
-                    <CardTitle className="text-aviation-grey">{course.title}</CardTitle>
-                    <CardDescription>{course.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="grid grid-cols-2 gap-4 text-sm">
-                        <div className="flex items-center space-x-2">
-                          <Clock className="h-4 w-4 text-muted-foreground" />
-                          <span>{course.duration}</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <Users className="h-4 w-4 text-muted-foreground" />
-                          <span>{course.students}</span>
-                        </div>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <h4 className="font-semibold text-aviation-grey">Course Includes:</h4>
-                        <ul className="space-y-1">
-                          {course.features.map((feature, featureIndex) => (
-                            <li key={featureIndex} className="text-sm text-muted-foreground flex items-center space-x-2">
-                              <div className="w-1 h-1 bg-sky-primary rounded-full"></div>
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div className="pt-4 border-t">
-                        <div className="text-2xl font-bold text-sky-primary mb-4">{course.price}</div>
-                        <Button variant="aviation" className="w-full">
-                          Learn More
-                        </Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+                    <Badge className="bg-green-100 text-green-800 font-medium text-xs px-3 py-1 rounded-full">
+                      {course.level}
+                    </Badge>
+                  </div>
+                  <CardTitle className="text-xl font-semibold text-gray-800 leading-snug">
+                    {course.title}
+                  </CardTitle>
+                  <CardDescription className="text-sm text-gray-600 leading-relaxed mt-2">
+                    {course.description}
+                  </CardDescription>
+                </CardHeader>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-muted/50">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold text-aviation-grey mb-6">
-              Ready to Start Your Aviation Journey?
-            </h2>
-            <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
-              Contact us today to discuss which course is right for you and take the first step towards your pilot license.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="aviation" size="lg">
-                Schedule Consultation
-              </Button>
-              <Button variant="outline" size="lg">
-                Download Brochure
-              </Button>
-            </div>
+                {/* Card Content */}
+                <CardContent className="p-6 pt-0">
+                  {/* Course Info */}
+                  <div className="flex items-center justify-between text-sm text-gray-700 mb-4">
+                    <div className="flex items-center space-x-2">
+                      <span role="img" aria-label="clock">
+                        🕒
+                      </span>
+                      <span>{course.duration}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <span role="img" aria-label="pilot">
+                        👨‍✈️
+                      </span>
+                      <span>{course.students}</span>
+                    </div>
+                  </div>
+
+                  {/* Features */}
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-gray-800 text-sm mb-1">
+                      Course Includes:
+                    </h4>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      {course.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start space-x-2">
+                          <span className="text-vulcan-red text-lg leading-4">•</span>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Price & CTA */}
+                  <div className="border-t mt-4 pt-4">
+                    <div className="text-xl font-bold text-vulcan-red mb-4">
+                      {course.price}
+                    </div>
+                    <Link to={`/${course.slug}`}>
+                      <Button
+                        className="w-full bg-vulcan-red hover:bg-vulcan-red/90 text-white font-semibold rounded-md py-2"
+                        size="lg"
+                      >
+                        Learn More
+                      </Button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </section>
       </main>
