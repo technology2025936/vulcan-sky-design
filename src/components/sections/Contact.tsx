@@ -118,9 +118,6 @@ const Contact = () => {
                             <h4 className="font-bold text-foreground mb-2 text-lg">
                               {info.title}
                             </h4>
-                            <h4 className="font-bold text-foreground mb-2 text-lg">
-                              {info.details}
-                            </h4>
                             <h4 className="font-600 text-foreground mb-2 text-lg">
                               {info.subtitle}
                             </h4>
