@@ -146,9 +146,9 @@ const CoursesOnOffer = () => {
 
                   {/* Price & CTA */}
                   <div className="border-t mt-4 pt-4">
-                    <div className="text-xl font-bold text-vulcan-red mb-4">
+                    {/* <div className="text-xl font-bold text-vulcan-red mb-4">
                       {course.price}
-                    </div>
+                    </div> */}
                     <Link to={`/${course.slug}`}>
                       <Button
                         className="w-full bg-vulcan-red hover:bg-vulcan-red/90 text-white font-semibold rounded-md py-2"

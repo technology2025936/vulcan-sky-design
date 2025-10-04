@@ -69,14 +69,14 @@ const MultiEngineCPL = () => {
               <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed">
                 Train for professional aviation with advanced multi-engine handling, instrument rating, and CPL flight test at Lanseria International Airport
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
+              {/* <div className="flex flex-wrap justify-center gap-4">
                 <Button size="lg" className="bg-white text-vulcan-red hover:bg-white/90">
                   Apply Now
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
                   Download Brochure
                 </Button>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
@@ -248,7 +248,7 @@ const MultiEngineCPL = () => {
               <Button size="lg" className="bg-white text-vulcan-red hover:bg-white/90">
                 Apply Now
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button size="lg" variant="outline" className="border-white text-vulcan-red hover:bg-white/10">
                 Contact Admissions
               </Button>
             </div>

@@ -82,14 +82,14 @@ const CommercialPilotLicense = () => {
               <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed">
                 Begin your high-flying career with Aviakul's flagship CPL program designed to prepare you for airline and charter operations
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
+              {/* <div className="flex flex-wrap justify-center gap-4">
                 <Button size="lg" className="bg-white text-vulcan-red hover:bg-white/90">
                   Apply Now
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
                   Download Brochure
                 </Button>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
@@ -291,7 +291,7 @@ const CommercialPilotLicense = () => {
               <Button size="lg" className="bg-white text-vulcan-red hover:bg-white/90">
                 Apply Now
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button size="lg" variant="outline" className="border-white text-vulcan-red hover:bg-white/10">
                 Contact Admissions
               </Button>
             </div>

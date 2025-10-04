@@ -49,14 +49,14 @@ const SingleEngineCPL = () => {
               <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed">
                 Build your professional flying career with a strong foundation in single-engine instrument operations across India and South Africa
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
+              {/* <div className="flex flex-wrap justify-center gap-4">
                 <Button size="lg" className="bg-white text-vulcan-red hover:bg-white/90">
                   Apply Now
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
                   Download Brochure
                 </Button>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
@@ -194,7 +194,7 @@ const SingleEngineCPL = () => {
               <Button size="lg" className="bg-white text-vulcan-red hover:bg-white/90">
                 Apply Now
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button size="lg" variant="outline" className="border-white text-vulcan-red hover:bg-white/10">
                 Contact Admissions
               </Button>
             </div>

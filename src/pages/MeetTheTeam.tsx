@@ -3,17 +3,28 @@ import Footer from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Award, Clock, Plane, Star } from "lucide-react";
+import kiron from "@/assets/Kiron.jpg";
+import sachin from "@/assets/Sachin.jpg";
 
 const MeetTheTeam = () => {
   const team = [
     {
       name: "Mr Kiron Hanuman",
       role: "Director & Co-Founder",
-      experience: ["Airline Instructor","Involved in ab-initio flight and ground training at Vulcan Aviation"],
+      experience: ["Airline Instructor", "Involved in ab-initio flight and ground training at Vulcan Aviation"],
       certifications: ["Airline Transport Pilot License (ATPL) with multiple Type Rating endorsements",],
-      specialties: ["Instructor Rating", "Airline Transport Pilot License (ATPL)", "Type Rating endorsements:","Airbus A320/340", "B737 Classic/NG", "Piper Seneca (PA34)", "Cessna Series", " Piper Series", "Diamond DA20"],
+      specialties: ["Instructor Rating", "Airline Transport Pilot License (ATPL)", "Type Rating endorsements:", "Airbus A320/340", "B737 Classic/NG", "Piper Seneca (PA34)", "Cessna Series", " Piper Series", "Diamond DA20"],
       bio: "Highly experienced aviation professional with over 11,300 flying hours",
-      image: "/placeholder.svg"
+      image: kiron,
+    },
+    {
+      name: "Mr Sachin Meda",
+      role: "Chief Flight Instructor",
+      experience: ["South African ATPL", "Flight Instructor Grade 2", "Total flying time: 4000+"],
+      specialties: ["Cessna 150", "Cessna 152", "Cessna 172", "Cessna 182", "Diamond DA42", "Jabiru 2 series", "Jabiru 4 series", "Various LSA", "Diamond DA20", "Piper 28R series", "Piper 32 series", "Piper 34 series", "RV6", "Sling"],
+      bio: "Highly experienced aviation professional with over 4000+ flying hours",
+      certifications: ["Airline Transport Pilot License (ATPL) with multiple Type Rating endorsements",],
+      image: sachin,
     },
   ];
 
@@ -63,25 +74,29 @@ const MeetTheTeam = () => {
 
         {/* Team Members */}
         <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="container mx-auto px-1  ">
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
               {team.map((member, index) => (
                 <Card key={index} className="overflow-hidden hover:shadow-elegant transition-all duration-300">
                   <div className="aspect-square bg-gradient-subtle flex items-center justify-center">
-                    <div className="w-32 h-32 bg-sky-primary/20 rounded-full flex items-center justify-center">
-                      <Plane className="h-12 w-12 text-sky-primary" />
+                    <div className="aspect-[4/3] relative overflow-hidden rounded-t-3xl">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
                     </div>
                   </div>
                   <CardContent className="p-6">
                     <h3 className="text-xl font-bold text-aviation-grey mb-2">{member.name}</h3>
                     <p className="text-sky-primary font-semibold mb-3">{member.role}</p>
-                    
+
                     <div className="space-y-3 mb-4">
                       <div className="flex items-center space-x-2">
                         <Clock className="h-4 w-4 text-muted-foreground" />
                         <span className="text-sm">{member.experience}</span>
                       </div>
-                      
+
                       <div>
                         <p className="text-sm font-semibold mb-2">Certifications:</p>
                         <div className="flex flex-wrap gap-1">
@@ -92,7 +107,7 @@ const MeetTheTeam = () => {
                           ))}
                         </div>
                       </div>
-                      
+
                       <div>
                         <p className="text-sm font-semibold mb-2">Licenses & Ratings:</p>
                         <div className="flex flex-wrap gap-1">
@@ -104,7 +119,7 @@ const MeetTheTeam = () => {
                         </div>
                       </div>
                     </div>
-                    
+
                     <p className="text-sm text-muted-foreground leading-relaxed">{member.bio}</p>
                   </CardContent>
                 </Card>
@@ -120,7 +135,7 @@ const MeetTheTeam = () => {
               Train with the Best Instructors
             </h2>
             <p className="text-primary-foreground/90 text-lg mb-8 max-w-2xl mx-auto">
-              Our experienced team is ready to guide you through every step of your aviation journey. 
+              Our experienced team is ready to guide you through every step of your aviation journey.
               Contact us to meet your future instructor.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
