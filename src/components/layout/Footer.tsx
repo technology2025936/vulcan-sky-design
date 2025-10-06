@@ -24,8 +24,7 @@ const Footer = () => {
                 Professional flight training with experienced instructors, modern aircraft, and comprehensive programs designed to make your aviation dreams take flight.
               </p>
               <div className="text-sm text-sky-light">
-                <p>FAA Certified Training Provider</p>
-                <p>Certificate #: FAA-142-1234</p>
+                <p>SACAA approved Aviation Training Organisation (ATO/1575/CAA)</p>
               </div>
             </div>
 
