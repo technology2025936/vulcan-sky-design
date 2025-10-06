@@ -11,7 +11,7 @@ const MeetTheTeam = () => {
     {
       name: "Mr Kiron Hanuman",
       role: "Director & Co-Founder",
-      experience: ["Airline Instructor", "Involved in ab-initio flight and ground training at Vulcan Aviation"],
+      experience: ["South African ATPL Flight Instructor at Vulcan Aviation"],
       certifications: ["Airline Transport Pilot License (ATPL) with multiple Type Rating endorsements",],
       specialties: ["Instructor Rating", "Airline Transport Pilot License (ATPL)", "Type Rating endorsements:", "Airbus A320/340", "B737 Classic/NG", "Piper Seneca (PA34)", "Cessna Series", " Piper Series", "Diamond DA20"],
       bio: "Highly experienced aviation professional with over 11,300 flying hours",
@@ -20,7 +20,7 @@ const MeetTheTeam = () => {
     {
       name: "Mr Sachin Meda",
       role: "Chief Flight Instructor",
-      experience: ["South African ATPL", "Flight Instructor Grade 2", "Total flying time: 4000+"],
+      experience: ["South African ATPL Flight Instructor Grade 2"],
       specialties: ["Cessna 150", "Cessna 152", "Cessna 172", "Cessna 182", "Diamond DA42", "Jabiru 2 series", "Jabiru 4 series", "Various LSA", "Diamond DA20", "Piper 28R series", "Piper 32 series", "Piper 34 series", "RV6", "Sling"],
       bio: "Highly experienced aviation professional with over 4000+ flying hours",
       certifications: ["Airline Transport Pilot License (ATPL) with multiple Type Rating endorsements",],
@@ -38,36 +38,36 @@ const MeetTheTeam = () => {
             <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-6">
               Meet Our Expert Team
             </h1>
-            <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto">
+            {/* <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto">
               Learn from experienced aviation professionals who are passionate about training the next generation of pilots
-            </p>
+            </p> */}
           </div>
         </section>
 
         {/* Team Stats */}
         <section className="py-20 bg-muted/50">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <div>
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-8 text-center">
+              {/* <div>
                 <Award className="h-8 w-8 text-sky-primary mx-auto mb-4" />
                 <div className="text-3xl font-bold text-aviation-grey">70,000+</div>
                 <div className="text-muted-foreground">Combined Flight Hours</div>
-              </div>
+              </div> */}
               <div>
                 <Plane className="h-8 w-8 text-sky-primary mx-auto mb-4" />
                 <div className="text-3xl font-bold text-aviation-grey">25+</div>
-                <div className="text-muted-foreground">Years Combined Experience</div>
+                <div className="text-muted-foreground">Combined Years Experience</div>
               </div>
               <div>
                 <Star className="h-8 w-8 text-sky-primary mx-auto mb-4" />
                 <div className="text-3xl font-bold text-aviation-grey">100%</div>
                 <div className="text-muted-foreground">Certified Instructors</div>
               </div>
-              <div>
+              {/* <div>
                 <Clock className="h-8 w-8 text-sky-primary mx-auto mb-4" />
                 <div className="text-3xl font-bold text-aviation-grey">1,500+</div>
                 <div className="text-muted-foreground">Students Trained</div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>

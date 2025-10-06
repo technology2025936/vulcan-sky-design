@@ -61,21 +61,21 @@ const AboutUs = () => {
         
         <section className="py-20 bg-muted/50">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
               <Card className="text-center">
                 <CardContent className="pt-6">
                   <Award className="h-8 w-8 text-sky-primary mx-auto mb-4" />
                   <div className="text-3xl font-bold text-aviation-grey">25+</div>
-                  <div className="text-muted-foreground">Years Experience</div>
+                  <div className="text-muted-foreground">Combined Years Experience</div>
                 </CardContent>
               </Card>
-              <Card className="text-center">
+              {/* <Card className="text-center">
                 <CardContent className="pt-6">
                   <Users className="h-8 w-8 text-sky-primary mx-auto mb-4" />
                   <div className="text-3xl font-bold text-aviation-grey">1,500+</div>
                   <div className="text-muted-foreground">Trained Pilots</div>
                 </CardContent>
-              </Card>
+              </Card> */}
               <Card className="text-center">
                 <CardContent className="pt-6">
                   <Target className="h-8 w-8 text-sky-primary mx-auto mb-4" />
@@ -86,7 +86,7 @@ const AboutUs = () => {
               <Card className="text-center">
                 <CardContent className="pt-6">
                   <CheckCircle className="h-8 w-8 text-sky-primary mx-auto mb-4" />
-                  <div className="text-3xl font-bold text-aviation-grey">15</div>
+                  <div className="text-3xl font-bold text-aviation-grey">11+</div>
                   <div className="text-muted-foreground">Aircraft Fleet</div>
                 </CardContent>
               </Card>

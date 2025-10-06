@@ -20,14 +20,14 @@ const SingleEngineCPL = () => {
   ];
 
   const features = [
-    "Comprehensive ground school covering all DGCA subjects",
-    "PPL training and hour building at Rustenburg Aerodrome",
-    "Night Rating and Single-Engine Instrument Rating",
-    "Training at Lanseria International Airport",
-    "Visa assistance and accommodation support",
-    "Experienced flight instructors from India and South Africa",
-    "Modern training aircraft fleet",
-    "Complete career guidance and placement support",
+    "Night Rating",
+    "Single-Engine Instrument Rating",
+    "Commercial Pilot Licence (CPL) training and skill test",
+    // "Training at Lanseria International Airport",
+    // "Visa assistance and accommodation support",
+    // "Experienced flight instructors from India and South Africa",
+    // "Modern training aircraft fleet",
+    // "Complete career guidance and placement support",
   ];
 
   return (

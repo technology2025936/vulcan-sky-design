@@ -43,10 +43,15 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold mb-4">Programs</h4>
               <ul className="space-y-2 text-sky-light">
-                <li><a href="#" className="hover:text-white transition-colors">Private Pilot</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Commercial Pilot</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Private Pilot Licence</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Night Rating</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Instrument Rating</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Discovery Flights</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Commercial Pilots Licence</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">DGCA Commercial Pilots Licence (Includes Accommodation)</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Multi-Engine Rating</a></li>
+                {/* <li><a href="#" className="hover:text-white transition-colors">ATPL</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">MCC (Multi-crew Co-operation Course)</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">ATR Rating (ATR 42/72)</a></li> */}
               </ul>
             </div>
           </div>

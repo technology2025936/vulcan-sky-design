@@ -26,7 +26,7 @@ const CommercialPilotLicense = () => {
     { requirement: "Pilot-in-Command", value: "100 hours", icon: Users },
     { requirement: "Cross-Country Flight", value: "50 hours", icon: Plane },
     { requirement: "Instrument Time", value: "50 hours (20 sim max)", icon: Award },
-    { requirement: "Night Operations", value: "4 hours + 10 T/L", icon: Moon },
+    { requirement: "Night Operations", value: "15 hours + 10 T/L", icon: Moon },
   ];
 
   const programPhases = [
@@ -51,12 +51,10 @@ const CommercialPilotLicense = () => {
   ];
 
   const benefits = [
-    "DGCA approved training organization",
+    "DGCA Compilance Course",
     "Modern training aircraft fleet",
     "Experienced DGCA certified instructors",
-    "Comprehensive ground school with LMS",
     "Simulator training included",
-    "Radio Telephony certification",
     "Night rating qualification",
     "Career guidance and placement support",
     "Small batch sizes for personalized attention",

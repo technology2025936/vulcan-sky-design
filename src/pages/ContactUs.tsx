@@ -15,10 +15,54 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+
+
 
 const ContactUs = () => {
+
+  const [open, setOpen] = useState(false);
+  const [popupSubmitted, setPopupSubmitted] = useState(false);
+  const [popupForm, setPopupForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
+
+  const handlePopupChange = (e: any) => {
+    const { id, value } = e.target;
+    setPopupForm((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handlePopupSubmit = (e: any) => {
+    e.preventDefault();
+    setPopupSubmitted(true);
+
+    // Optionally trigger file download
+    setTimeout(() => {
+      const link = document.createElement("a");
+      link.href = "/downloads/DGCA_Estimate.pdf"; // Replace with actual file path
+      link.download = "DGCA_Estimate.pdf";
+      link.click();
+      setOpen(false);
+      setPopupSubmitted(false);
+      setPopupForm({ name: "", email: "", phone: "" });
+    }, 2000);
+  };
+
+
   const [formData, setFormData] = useState({
     fullName: "",
+    email: "",
+    phone: "",
     dob: "",
     height: "",
     education: "",
@@ -70,7 +114,7 @@ const ContactUs = () => {
         {/* Contact Information */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {/* <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
               <Card className="text-center">
                 <CardContent className="pt-6">
                   <MapPin className="h-8 w-8 text-sky-primary mx-auto mb-4" />
@@ -102,7 +146,7 @@ const ContactUs = () => {
                   <Mail className="h-8 w-8 text-sky-primary mx-auto mb-4" />
                   <CardTitle className="text-lg mb-2">Email</CardTitle>
                   <CardDescription>
-                   Enquires@flyvulcan.co.za
+                    enquires@flyvulcan.co.za
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -120,7 +164,7 @@ const ContactUs = () => {
                   </CardDescription>
                 </CardContent>
               </Card>
-            </div>
+            </div> */}
 
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Questionnaire Form */}
@@ -134,6 +178,7 @@ const ContactUs = () => {
                     will reach out to you within 24 hours.
                   </CardDescription>
                 </CardHeader>
+
                 <CardContent>
                   {submitted ? (
                     <div className="p-8 text-center bg-muted rounded-lg">
@@ -147,6 +192,7 @@ const ContactUs = () => {
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
+                      {/* Full Name */}
                       <div className="space-y-2">
                         <Label htmlFor="fullName">
                           What is your full name (as per passport/ID)?
@@ -156,34 +202,63 @@ const ContactUs = () => {
                           placeholder="Enter your full name"
                           value={formData.fullName}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
+                      {/* Email */}
                       <div className="space-y-2">
-                        <Label htmlFor="dob">
-                          What is your date of birth?
-                        </Label>
+                        <Label htmlFor="email">What is your email address?</Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="Enter your email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+
+                      {/* Phone */}
+                      <div className="space-y-2">
+                        <Label htmlFor="phone">What is your phone number?</Label>
+                        <Input
+                          id="phone"
+                          type="tel"
+                          placeholder="Enter your phone number"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+
+                      {/* Date of Birth */}
+                      <div className="space-y-2">
+                        <Label htmlFor="dob">What is your date of birth?</Label>
                         <Input
                           id="dob"
                           type="date"
                           value={formData.dob}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
+                      {/* Height */}
                       <div className="space-y-2">
                         <Label htmlFor="height">
-                          What is your current height? (Minimum requirement:
-                          155 cm)
+                          What is your current height? (Minimum requirement: 155 cm)
                         </Label>
                         <Input
                           id="height"
                           placeholder="Enter your height in cm"
                           value={formData.height}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
+                      {/* Education */}
                       <div className="space-y-2">
                         <Label htmlFor="education">
                           What is your highest completed level of education?
@@ -193,9 +268,11 @@ const ContactUs = () => {
                           placeholder="Enter your qualification"
                           value={formData.education}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
+                      {/* Licence */}
                       <div className="space-y-2">
                         <Label htmlFor="licence">
                           Do you currently hold any pilot licence or aviation
@@ -206,19 +283,21 @@ const ContactUs = () => {
                           placeholder="Enter details of your licence or experience"
                           value={formData.licence}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
+                      {/* Medical */}
                       <div className="space-y-2">
                         <Label htmlFor="medical">
-                          Have you completed a Class 1 or Class 2 Aviation
-                          Medical?
+                          Have you completed a Class 1 or Class 2 Aviation Medical?
                         </Label>
                         <select
                           id="medical"
                           className="w-full p-3 border border-input rounded-lg bg-background"
                           value={formData.medical}
                           onChange={handleChange}
+                          required
                         >
                           <option value="">Select option</option>
                           <option value="Class 1">Class 1</option>
@@ -227,43 +306,46 @@ const ContactUs = () => {
                         </select>
                       </div>
 
+                      {/* English */}
                       <div className="space-y-2">
                         <Label htmlFor="english">
-                          What is your level of English proficiency
-                          (speaking, reading, writing)?
+                          What is your level of English proficiency (speaking, reading, writing)?
                         </Label>
                         <Input
                           id="english"
                           placeholder="Example: Fluent / Intermediate / Basic"
                           value={formData.english}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
+                      {/* Career Goal */}
                       <div className="space-y-2">
                         <Label htmlFor="careerGoal">
-                          What is your career goal in aviation (airline
-                          pilot, charter, instructor, etc.)?
+                          What is your career goal in aviation (airline pilot, charter, instructor, etc.)?
                         </Label>
                         <Textarea
                           id="careerGoal"
                           placeholder="Describe your career goal"
                           value={formData.careerGoal}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
+                      {/* Citizenship */}
                       <div className="space-y-2">
                         <Label htmlFor="citizenship">
-                          Are you a South African citizen or an international
-                          applicant? If international, what is your country of
-                          origin?
+                          Are you a South African citizen or an international applicant?
+                          If international, what is your country of origin?
                         </Label>
                         <Input
                           id="citizenship"
                           placeholder="Enter your citizenship or country"
                           value={formData.citizenship}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
@@ -281,9 +363,10 @@ const ContactUs = () => {
                 </CardContent>
               </Card>
 
+
               {/* Map and Additional Info */}
               <div className="space-y-8">
-                <Card>
+                {/* <Card>
                   <CardHeader>
                     <CardTitle className="text-aviation-grey">
                       Visit Our Facility
@@ -321,9 +404,60 @@ const ContactUs = () => {
                       </div>
                     </div>
                   </CardContent>
-                </Card>
+                </Card> */}
 
-                <Card>
+                <Card className="p-2">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+                    <Card className="text-center">
+                      <CardContent className="pt-6">
+                        <MapPin className="h-8 w-8 text-sky-primary mx-auto mb-4" />
+                        <CardTitle className="text-lg mb-2">Location</CardTitle>
+                        <CardDescription>
+                          1234 Aviation Drive
+                          <br />
+                          Sky Harbor Airport
+                          <br />
+                          Phoenix, AZ 85034
+                        </CardDescription>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="text-center">
+                      <CardContent className="pt-6">
+                        <Phone className="h-8 w-8 text-sky-primary mx-auto mb-4" />
+                        <CardTitle className="text-lg mb-2">Phone</CardTitle>
+                        <CardDescription>
+                          +91 866 0164381
+                          <br />
+                          +27 71 113 7209
+                        </CardDescription>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="text-center">
+                      <CardContent className="pt-6">
+                        <Mail className="h-8 w-8 text-sky-primary mx-auto mb-4" />
+                        <CardTitle className="text-lg mb-2">Email</CardTitle>
+                        <CardDescription>
+                          enquires@flyvulcan.co.za
+                        </CardDescription>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="text-center">
+                      <CardContent className="pt-6">
+                        <Clock className="h-8 w-8 text-sky-primary mx-auto mb-4" />
+                        <CardTitle className="text-lg mb-2">Hours</CardTitle>
+                        <CardDescription>
+                          Mon-Fri: 7:00 AM - 7:00 PM
+                          <br />
+                          Saturday: 8:00 AM - 5:00 PM
+                          <br />
+                          Sunday: 9:00 AM - 4:00 PM
+                        </CardDescription>
+                      </CardContent>
+                    </Card>
+                  </div>
                   <CardHeader>
                     <CardTitle className="text-aviation-grey">
                       Quick Links
@@ -331,29 +465,80 @@ const ContactUs = () => {
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex justify-between items-center p-3 border rounded-lg">
-                      <span>Schedule a Discovery Flight</span>
-                      <Button variant="outline" size="sm">
-                        Book Now
-                      </Button>
+                      <span>Download DGCA Estimate</span>
+                      <Dialog open={open} onOpenChange={setOpen}>
+                        <DialogTrigger asChild>
+                          <Button variant="outline" size="sm">
+                            Download Now
+                          </Button>
+                        </DialogTrigger>
+
+                        <DialogContent className="sm:max-w-md">
+                          <DialogHeader>
+                            <DialogTitle className="text-aviation-grey">
+                              DGCA Estimate
+                            </DialogTitle>
+                            <DialogDescription>
+                              Please fill out the form to access the download.
+                            </DialogDescription>
+                          </DialogHeader>
+
+                          {!popupSubmitted ? (
+                            <form onSubmit={handlePopupSubmit} className="space-y-4">
+                              <div className="space-y-2">
+                                <Label htmlFor="name">Full Name</Label>
+                                <Input
+                                  id="name"
+                                  placeholder="Enter your full name"
+                                  value={popupForm.name}
+                                  onChange={handlePopupChange}
+                                  required
+                                />
+                              </div>
+
+                              <div className="space-y-2">
+                                <Label htmlFor="email">Email Address</Label>
+                                <Input
+                                  id="email"
+                                  type="email"
+                                  placeholder="Enter your email"
+                                  value={popupForm.email}
+                                  onChange={handlePopupChange}
+                                  required
+                                />
+                              </div>
+
+                              <div className="space-y-2">
+                                <Label htmlFor="phone">Phone Number</Label>
+                                <Input
+                                  id="phone"
+                                  type="tel"
+                                  placeholder="Enter your phone number"
+                                  value={popupForm.phone}
+                                  onChange={handlePopupChange}
+                                  required
+                                />
+                              </div>
+
+                              <Button type="submit" variant="aviation" className="w-full">
+                                <Send className="h-4 w-4 mr-2" /> Submit & Download
+                              </Button>
+                            </form>
+                          ) : (
+                            <div className="text-center py-6">
+                              <h3 className="text-lg font-semibold text-sky-primary mb-2">
+                                Thank You!
+                              </h3>
+                              <p className="text-muted-foreground">
+                                Your download will start automatically.
+                              </p>
+                            </div>
+                          )}
+                        </DialogContent>
+                      </Dialog>
+
                     </div>
-                    <div className="flex justify-between items-center p-3 border rounded-lg">
-                      <span>Download Course Brochure</span>
-                      <Button variant="outline" size="sm">
-                        Download
-                      </Button>
-                    </div>
-                    <div className="flex justify-between items-center p-3 border rounded-lg">
-                      <span>Schedule Campus Tour</span>
-                      <Button variant="outline" size="sm">
-                        Tour
-                      </Button>
-                    </div>
-                    <div className="flex justify-between items-center p-3 border rounded-lg">
-                      <span>Financial Aid Information</span>
-                      <Button variant="outline" size="sm">
-                        Learn More
-                      </Button>
-                    </div>
+
                   </CardContent>
                 </Card>
               </div>

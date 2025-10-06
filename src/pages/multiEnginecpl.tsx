@@ -14,13 +14,13 @@ const MultiEngineCPL = () => {
   ];
 
   const trainingStages = [
-    { 
-      stage: "Ground School", 
-      location: "Aviakul, New Delhi", 
-      duration: "5 months",
-      description: "Comprehensive theoretical training covering all DGCA requirements",
-      modules: ["Air Law & Regulations", "Aircraft General Knowledge", "Flight Performance & Planning", "Aviation Meteorology", "Human Performance", "Navigation & Radio Aids"]
-    },
+    // { 
+    //   stage: "Ground School", 
+    //   location: "Aviakul, New Delhi", 
+    //   duration: "5 months",
+    //   description: "Comprehensive theoretical training covering all DGCA requirements",
+    //   modules: ["Air Law & Regulations", "Aircraft General Knowledge", "Flight Performance & Planning", "Aviation Meteorology", "Human Performance", "Navigation & Radio Aids"]
+    // },
     { 
       stage: "PPL & Hour Building", 
       location: "Rustenburg Aerodrome", 
@@ -38,14 +38,11 @@ const MultiEngineCPL = () => {
   ];
 
   const programFeatures = [
-    "DGCA approved ground school in New Delhi",
+    "DGCA Compilance Course",
     "Multi-engine training on Piper Seneca aircraft",
     "Night Rating and Instrument Rating (Multi-Engine)",
     "Training at international controlled airspace",
-    "Rustenburg Aerodrome for PPL and hour building",
-    "Lanseria International Airport for advanced training",
     "Comprehensive visa and accommodation assistance",
-    "Career guidance and airline placement support",
     "Modern fleet with advanced avionics",
     "Experienced international flight instructors",
   ];

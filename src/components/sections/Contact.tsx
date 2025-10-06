@@ -51,16 +51,14 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Phone,
-      title: "Office: +27 87 265 7150",
-      subtitle: "After Hours/Emergency: +27 72 081 8608",
-      subtitle2: "Indian Office: +91 76005 34733",
+      title: "Phone Numbers",
+      subtitle: "+91 866 0164381",
+      subtitle2: "+27 71 113 7209",
     },
     {
       icon: Mail,
       title: "For course/training estimates, email to:",
       details2: "enquiries@flyvulcan.co.za",
-      title2: "For Indian nationals (DGCA), email to:",
-      details3: "admissions@flyvulcan.in",
     },
     {
       icon: MapPin,
@@ -154,6 +152,7 @@ const Contact = () => {
                     will reach out to you within 24 hours.
                   </CardDescription>
                 </CardHeader>
+
                 <CardContent>
                   {submitted ? (
                     <div className="p-8 text-center bg-muted rounded-lg">
@@ -167,6 +166,7 @@ const Contact = () => {
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
+                      {/* Full Name */}
                       <div className="space-y-2">
                         <Label htmlFor="fullName">
                           What is your full name (as per passport/ID)?
@@ -176,9 +176,37 @@ const Contact = () => {
                           placeholder="Enter your full name"
                           value={formData.fullName}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
+                      {/* Email */}
+                      <div className="space-y-2">
+                        <Label htmlFor="email">What is your email address?</Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="Enter your email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+
+                      {/* Phone */}
+                      <div className="space-y-2">
+                        <Label htmlFor="phone">What is your phone number?</Label>
+                        <Input
+                          id="phone"
+                          type="tel"
+                          placeholder="Enter your phone number"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+
+                      {/* Date of Birth */}
                       <div className="space-y-2">
                         <Label htmlFor="dob">What is your date of birth?</Label>
                         <Input
@@ -186,22 +214,25 @@ const Contact = () => {
                           type="date"
                           value={formData.dob}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
+                      {/* Height */}
                       <div className="space-y-2">
                         <Label htmlFor="height">
-                          What is your current height? (Minimum requirement: 155
-                          cm)
+                          What is your current height? (Minimum requirement: 155 cm)
                         </Label>
                         <Input
                           id="height"
                           placeholder="Enter your height in cm"
                           value={formData.height}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
+                      {/* Education */}
                       <div className="space-y-2">
                         <Label htmlFor="education">
                           What is your highest completed level of education?
@@ -211,9 +242,11 @@ const Contact = () => {
                           placeholder="Enter your qualification"
                           value={formData.education}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
+                      {/* Licence */}
                       <div className="space-y-2">
                         <Label htmlFor="licence">
                           Do you currently hold any pilot licence or aviation
@@ -224,19 +257,21 @@ const Contact = () => {
                           placeholder="Enter details of your licence or experience"
                           value={formData.licence}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
+                      {/* Medical */}
                       <div className="space-y-2">
                         <Label htmlFor="medical">
-                          Have you completed a Class 1 or Class 2 Aviation
-                          Medical?
+                          Have you completed a Class 1 or Class 2 Aviation Medical?
                         </Label>
                         <select
                           id="medical"
                           className="w-full p-3 border border-input rounded-lg bg-background"
                           value={formData.medical}
                           onChange={handleChange}
+                          required
                         >
                           <option value="">Select option</option>
                           <option value="Class 1">Class 1</option>
@@ -245,43 +280,46 @@ const Contact = () => {
                         </select>
                       </div>
 
+                      {/* English */}
                       <div className="space-y-2">
                         <Label htmlFor="english">
-                          What is your level of English proficiency (speaking,
-                          reading, writing)?
+                          What is your level of English proficiency (speaking, reading, writing)?
                         </Label>
                         <Input
                           id="english"
                           placeholder="Example: Fluent / Intermediate / Basic"
                           value={formData.english}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
+                      {/* Career Goal */}
                       <div className="space-y-2">
                         <Label htmlFor="careerGoal">
-                          What is your career goal in aviation (airline pilot,
-                          charter, instructor, etc.)?
+                          What is your career goal in aviation (airline pilot, charter, instructor, etc.)?
                         </Label>
                         <Textarea
                           id="careerGoal"
                           placeholder="Describe your career goal"
                           value={formData.careerGoal}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
+                      {/* Citizenship */}
                       <div className="space-y-2">
                         <Label htmlFor="citizenship">
-                          Are you a South African citizen or an international
-                          applicant? If international, what is your country of
-                          origin?
+                          Are you a South African citizen or an international applicant?
+                          If international, what is your country of origin?
                         </Label>
                         <Input
                           id="citizenship"
                           placeholder="Enter your citizenship or country"
                           value={formData.citizenship}
                           onChange={handleChange}
+                          required
                         />
                       </div>
 
@@ -298,6 +336,7 @@ const Contact = () => {
                   )}
                 </CardContent>
               </Card>
+
             </div>
           </div>
         </div>
