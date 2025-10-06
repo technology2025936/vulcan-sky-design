@@ -17,6 +17,8 @@ import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 const Contact = () => {
   const [formData, setFormData] = useState({
     fullName: "",
+    email: "",
+    phone: "",
     dob: "",
     height: "",
     education: "",
@@ -52,25 +54,22 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone Numbers",
-      subtitle: "+91 866 0164381",
-      subtitle2: "+27 71 113 7209",
+      details: ["+91 866 0164381", "+27 71 113 7209"],
     },
     {
       icon: Mail,
       title: "For course/training estimates, email to:",
-      details2: "enquiries@flyvulcan.co.za",
+      details: ["enquiries@flyvulcan.co.za"],
     },
     {
       icon: MapPin,
       title: "Address",
-      details2:
-        "3rd Floor, Hangar 10, Gate 5 Lanseria International Airport South Africa 1748",
+      details: ["3rd Floor, Hangar 10, Gate 5 Lanseria International Airport South Africa 1748"],
     },
     {
       icon: Clock,
       title: "Hours",
-      details2: "Monday - Friday: 7AM - 7PM",
-      subtitle: "Saturday: 8AM - 5PM",
+      details: ["Monday - Friday: 7AM - 7PM", "Saturday: 8AM - 5PM"],
     },
   ];
 
@@ -116,21 +115,11 @@ const Contact = () => {
                             <h4 className="font-bold text-foreground mb-2 text-lg">
                               {info.title}
                             </h4>
-                            <h4 className="font-600 text-foreground mb-2 text-lg">
-                              {info.subtitle}
-                            </h4>
-                            <h4 className="font-600 text-foreground mb-2 text-lg">
-                              {info.title2}
-                            </h4>
-                            <h4 className="font-600 text-foreground mb-2 text-lg">
-                              {info.details2}
-                            </h4>
-                            <h4 className="font-600 text-foreground mb-2 text-lg">
-                              {info.details3}
-                            </h4>
-                            <h4 className="font-600 text-foreground mb-2 text-lg">
-                              {info.subtitle2}
-                            </h4>
+                            {info.details.map((detail, idx) => (
+                              <p key={idx} className="text-muted-foreground">
+                                {detail}
+                              </p>
+                            ))}
                           </div>
                         </div>
                       </CardContent>
