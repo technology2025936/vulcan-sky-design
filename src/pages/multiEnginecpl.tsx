@@ -55,7 +55,7 @@ const MultiEngineCPL = () => {
       <Header />
       
       <main>
-        {/* Hero Section */}
+        
         <section className="relative py-32 bg-gradient-hero overflow-hidden">
           <div className="absolute inset-0 bg-[url('/placeholder.svg')] opacity-10 bg-cover bg-center" />
           <div className="container mx-auto px-4 relative z-10">
@@ -235,7 +235,7 @@ const MultiEngineCPL = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
+        
         <section className="py-20 bg-gradient-hero">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -254,7 +254,7 @@ const MultiEngineCPL = () => {
             </div>
           </div>
         </section>
-      </main>
+      </main> 
 
       <Footer />
     </div>

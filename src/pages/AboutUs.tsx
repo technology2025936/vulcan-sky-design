@@ -8,7 +8,7 @@ const AboutUs = () => {
     <div className="min-h-screen">
       <Header />
       <main className="pt-20">
-        {/* Hero Section */}
+        
         <section className="py-20 bg-gradient-hero">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-6">
@@ -20,7 +20,7 @@ const AboutUs = () => {
           </div>
         </section>
 
-        {/* Mission & Vision */}
+       
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -58,7 +58,7 @@ const AboutUs = () => {
           </div>
         </section>
 
-        {/* Stats Section */}
+        
         <section className="py-20 bg-muted/50">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -94,7 +94,7 @@ const AboutUs = () => {
           </div>
         </section>
 
-        {/* Values Section */}
+        
         <section className="py-20">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center text-aviation-grey mb-12">Our Core Values</h2>
