@@ -68,7 +68,7 @@ const Contact = () => {
     },
     {
       icon: Clock,
-      title: "Hours",
+      title: "Hrs",
       details2: "Monday - Friday: 7AM - 7PM",
       subtitle: "Saturday: 8AM - 6PM",
     },
