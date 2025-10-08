@@ -13,10 +13,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     fullName: "",
+    email: "",
+    phone: "",
     dob: "",
     height: "",
     education: "",
@@ -35,18 +38,31 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    try {
-      await fetch("/api/sendEmail", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      setSubmitted(true);
-    } catch (err) {
-      console.error("Error submitting form:", err);
+    console.log("API_URL =", API_URL);
+  e.preventDefault();
+
+  try {
+    const response = await fetch(`${API_URL}/api/aviation-enquiries`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ data: formData }),
+    });
+
+    if (!response.ok) {
+      const error = await response.text();
+      console.error("❌ Failed:", response.status, error);
+      alert("Form submission failed!");
+      return;
     }
-  };
+
+    console.log("✅ Form submitted successfully!");
+    setSubmitted(true);
+  } catch (error) {
+    console.error("🚨 Network error:", error);
+    alert("Cannot reach backend. Make sure Strapi is running.");
+  }
+};
+
 
   const contactInfo = [
     {
