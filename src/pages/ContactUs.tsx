@@ -23,6 +23,7 @@ import {
   DialogDescription,
   DialogTrigger,
 } from "@/components/ui/dialog";
+const API_URL = import.meta.env.VITE_API_URL;
 
 
 
@@ -80,19 +81,31 @@ const ContactUs = () => {
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    try {
-      await fetch("/api/sendEmail", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      setSubmitted(true);
-    } catch (err) {
-      console.error("Error submitting form:", err);
+ const handleSubmit = async (e: any) => {
+    console.log("API_URL =", API_URL);
+  e.preventDefault();
+
+  try {
+    const response = await fetch(`${API_URL}/api/aviation-enquiries`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ data: formData }),
+    });
+
+    if (!response.ok) {
+      const error = await response.text();
+      console.error("❌ Failed:", response.status, error);
+      alert("Form submission failed!");
+      return;
     }
-  };
+
+    console.log("✅ Form submitted successfully!");
+    setSubmitted(true);
+  } catch (error) {
+    console.error("🚨 Network error:", error);
+    alert("Cannot reach backend. Make sure Strapi is running.");
+  }
+};
 
   return (
     <div className="min-h-screen">
