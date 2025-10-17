@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import SingleEngineCPL from "./pages/singleEnginecpl";
 import MultiEngineCPL from "./pages/multiEnginecpl";
 import CommercialPilotLicense from "./pages/commercialPilotLicense";
+import SacaaRequirements from "./pages/SacaaRequirements";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/single-engine" element={<SingleEngineCPL />} />
           <Route path="/multi-engine" element={<MultiEngineCPL/>} />
           <Route path="/commercial-pilot" element={<CommercialPilotLicense/>} />
+          <Route path="/sacaa-requirements" element={<SacaaRequirements/>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

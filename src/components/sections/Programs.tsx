@@ -7,6 +7,7 @@ import testone from "@/assets/cardtest.jpg"
 import testtwo from "@/assets/instrument.jpg"
 import testthree from "@/assets/cardtestsecond.jpg"
 import { Link } from "react-router-dom";
+import sacca from "@/assets/sacca.jpg"
 
 
 const Programs = () => {
@@ -34,6 +35,14 @@ const Programs = () => {
       icon: Navigation,
       image: testone,
       slug: "commercial-pilot"
+    },
+    {
+      id: 4,
+      title: "SACAA REQUIREMENTS (South African Civil Aviation Authority)",
+      description: "Your complete guide to obtaining SACAA pilot certifications including PPL, Night Rating, and Instrument Rating.",
+      icon: Navigation,
+      image: sacca,
+      slug: "sacaa-requirements"
     },
   ];
 
@@ -64,7 +73,7 @@ const Programs = () => {
         </div>
 
         {/* Programs Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {programs.map((program) => {
             const IconComponent = program.icon;
             return (

@@ -81,31 +81,30 @@ const ContactUs = () => {
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
- const handleSubmit = async (e: any) => {
-    console.log("API_URL =", API_URL);
-  e.preventDefault();
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
 
-  try {
-    const response = await fetch(`${API_URL}/api/aviation-enquiries`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ data: formData }),
-    });
+    try {
+      const response = await fetch(`${API_URL}/api/aviation-enquiries`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: formData }),
+      });
 
-    if (!response.ok) {
-      const error = await response.text();
-      console.error("❌ Failed:", response.status, error);
-      alert("Form submission failed!");
-      return;
+      if (!response.ok) {
+        const error = await response.text();
+        console.error("❌ Failed:", response.status, error);
+        alert("Form submission failed!");
+        return;
+      }
+
+      console.log("✅ Form submitted successfully!");
+      setSubmitted(true);
+    } catch (error) {
+      console.error("🚨 Network error:", error);
+      alert("Cannot reach backend. Make sure Strapi is running.");
     }
-
-    console.log("✅ Form submitted successfully!");
-    setSubmitted(true);
-  } catch (error) {
-    console.error("🚨 Network error:", error);
-    alert("Cannot reach backend. Make sure Strapi is running.");
-  }
-};
+  };
 
   return (
     <div className="min-h-screen">
@@ -426,11 +425,13 @@ const ContactUs = () => {
                         <MapPin className="h-8 w-8 text-sky-primary mx-auto mb-4" />
                         <CardTitle className="text-lg mb-2">Location</CardTitle>
                         <CardDescription>
-                          1234 Aviation Drive
+                          Vulcan aviation
                           <br />
-                          Sky Harbor Airport
+                          Hanger 10
                           <br />
-                          Phoenix, AZ 85034
+                          Lanseria airport joburg
+                          <br />
+                          1749
                         </CardDescription>
                       </CardContent>
                     </Card>
