@@ -14,7 +14,7 @@ const SacaaRequirements = () => {
         { label: "Medical", value: "Valid Class 2 Medical Certificate" },
         { label: "Radio Telephony", value: "Hold a Restricted Radio Telephony Licence" },
         { label: "Minimum Flight Hours", value: "45 total (25 Dual, 15 Solo, 5 Solo Cross-Country)" },
-        { label: "Theoretical Exams", value: "7 subjects to be completed" },
+        { label: "Theoretical Exams", value: "8 Theory Exams and 1 Oral Exam to be completed" },
         { label: "Skills Test", value: "Conducted with Designated Flight Examiner (DFE)" },
         { label: "Licence Requirement", value: "Hold SACAA Student Pilot Licence (SPL)" },
       ],
@@ -27,8 +27,7 @@ const SacaaRequirements = () => {
         { label: "Medical", value: "Valid Class 2 Medical (or higher)" },
         { label: "Theoretical Knowledge", value: "Night Rating Exam" },
         { label: "Minimum Flight Hours", value: "10 total (5 Dual Night, 5 Instrument – 2 may overlap PPL)" },
-        { label: "Solo Operations", value: "5 Solo Take-offs & Landings at Night" },
-        { label: "Skills Test", value: "With Grade II Instructor or DFE" },
+        { label: "Skills Test", value: "With DFE or Grade 2" },
       ],
     },
     {
