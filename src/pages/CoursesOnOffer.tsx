@@ -49,7 +49,7 @@ const CoursesOnOffer = () => {
       icon: <Plane className="h-5 w-5 text-vulcan-red" />,
     },
     {
-      title: "Commercial Pilot License (CPL) - DGCA Compilance",
+      title: "Commercial Pilot License (CPL) - DGCA Compliant",
       slug: "commercial-pilot",
       description:
         "A Commercial Pilot License also is known as CPL, is a type of License which allows a person to receive money in exchange for their services of flying certain aircraft. ",
