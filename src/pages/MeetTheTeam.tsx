@@ -3,7 +3,8 @@ import Footer from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Award, Clock, Plane, Star } from "lucide-react";
-import kiron from "@/assets/Kiron.jpg";
+import kironold from "@/assets/Kiron.jpg";
+import kiron from "@/assets/kironnew.jpeg";
 import sachin from "@/assets/Sachin.jpg";
 
 const MeetTheTeam = () => {
@@ -83,7 +84,7 @@ const MeetTheTeam = () => {
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="w-[62vh] h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     </div>
                   </div>
