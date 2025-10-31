@@ -54,7 +54,7 @@ const CoursesOnOffer = () => {
       slug: "commercial-pilot",
       description:
         "A Commercial Pilot License also is known as CPL, is a type of License which allows a person to receive money in exchange for their services of flying certain aircraft. ",
-      duration: "10–12 months",
+      duration: "12–14 months",
       students: "Small groups",
       price: "From ₹32,00,000",
       level: "Professional",
