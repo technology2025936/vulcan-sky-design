@@ -26,9 +26,9 @@ const CoursesOnOffer = () => {
       price: "From $24,000",
       level: "Professional",
       features: [
+        "Private Pilot License",
         "Night Rating",
         "Single-Engine Instrument Rating",
-        "Commercial Pilot Licence (CPL) training and skill test",
       ],
       icon: <Plane className="h-5 w-5 text-vulcan-red" />,
     },
@@ -42,9 +42,10 @@ const CoursesOnOffer = () => {
       price: "From $27,000",
       level: "Professional",
       features: [
+        "Private Pilot Licence (PPL)",
         "Night Rating",
         "Multi-Engine Rating on the Piper Seneca",
-        "Multi-Engine Instrument Rating",
+        "Instrument Rating",
       ],
       icon: <Plane className="h-5 w-5 text-vulcan-red" />,
     },
@@ -59,29 +60,29 @@ const CoursesOnOffer = () => {
       level: "Professional",
       features: [
         "DGCA Ground School (India)",
-        "200 Flying Hours",
+        "200 Flying Hours including 25 hours on Multi-Engine Aircraft",
         "Radio Telephony + SPL/FRTOL exams",
-        "Day & Night flight operations",
+        "SACAA PPL Ground School",
       ],
       icon: <Award className="h-5 w-5 text-vulcan-red" />,
     },
-      {
-      title: "SACAA Licensing Requirements",
-      slug: "sacaa-requirements",
-      description:
-        "Your complete guide to obtaining SACAA pilot certifications including PPL, Night Rating, and Instrument Rating.",
-      duration: "10–12 months",
-      students: "Small groups",
-      price: "From ₹32,00,000",
-      level: "Professional",
-      features: [
-        "Night Rating Exam",
-        "40 Instrument Time (Max 20 Simulator, Rest in Aircraft)",
-        "With Grade II Instructor or DFE",
-        "Conducted with Designated Flight Examiner (DFE)",
-      ],
-      icon: <Award className="h-5 w-5 text-vulcan-red" />,
-    },
+    //   {
+    //   title: "SACAA Licensing Requirements",
+    //   slug: "sacaa-requirements",
+    //   description:
+    //     "Your complete guide to obtaining SACAA pilot certifications including PPL, Night Rating, and Instrument Rating.",
+    //   duration: "10–12 months",
+    //   students: "Small groups",
+    //   price: "From ₹32,00,000",
+    //   level: "Professional",
+    //   features: [
+    //     "Night Rating Exam",
+    //     "40 Instrument Time (Max 20 Simulator, Rest in Aircraft)",
+    //     "With Grade II Instructor or DFE",
+    //     "Conducted with Designated Flight Examiner (DFE)",
+    //   ],
+    //   icon: <Award className="h-5 w-5 text-vulcan-red" />,
+    // },
   ];
 
   return (

@@ -10,7 +10,7 @@ const MultiEngineCPL = () => {
     { icon: Plane, title: "Multi-Engine", description: "Piper Seneca advanced training" },
     { icon: Globe, title: "International", description: "India + South Africa training" },
     { icon: Clock, title: "Duration", description: "12-14 months complete program" },
-    { icon: Award, title: "Elite Training", description: "Lanseria International Airport" },
+    { icon: Award, title: "Elite Training", description: "Lanseria International Airport & Rustenburg Regional Airport" },
   ];
 
   const trainingStages = [

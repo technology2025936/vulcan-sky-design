@@ -3,7 +3,7 @@ import Footer from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Plane, CheckCircle, Clock, Award, BookOpen, Radio, Moon, Users } from "lucide-react";
+import { Plane, CheckCircle, Clock, Award, BookOpen, Radio, Moon, Users, Sun } from "lucide-react";
 
 const CommercialPilotLicense = () => {
   const highlights = [
@@ -27,6 +27,7 @@ const CommercialPilotLicense = () => {
     { requirement: "Cross-Country Flight", value: "50 hours", icon: Plane },
     { requirement: "Instrument Time", value: "50 hours (20 sim max)", icon: Award },
     { requirement: "Night Operations", value: "15 hours + 10 T/L", icon: Moon },
+    { requirement: "Multi Engine Experience", value: "25 hours", icon: Sun },
   ];
 
   const programPhases = [
@@ -51,14 +52,15 @@ const CommercialPilotLicense = () => {
   ];
 
   const benefits = [
-    "DGCA Compilance Course",
-    "Modern training aircraft fleet",
-    "Experienced DGCA certified instructors",
+    "DGCA Compliant Course",
+    "Well Maintained training aircraft fleet",
+    "Experienced and certified instructors",
     "Simulator training included",
     "Night rating qualification",
-    "Career guidance and placement support",
     "Small batch sizes for personalized attention",
-    "Flexible training schedules",
+    "SACAA PPL Ground School",
+    "Two Training Bases for Faster Completion Times",
+    "Exposure to Operations at an International Airport"
   ];
 
   return (
