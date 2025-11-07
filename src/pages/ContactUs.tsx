@@ -479,7 +479,84 @@ const ContactUs = () => {
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex justify-between items-center p-3 border rounded-lg">
-                      <span>Download DGCA Estimate</span>
+                      <span>DGCA CPL estimate excluding ground classes</span>
+                      <Dialog open={open} onOpenChange={setOpen}>
+                        <DialogTrigger asChild>
+                          <Button variant="outline" size="sm">
+                            Download Now
+                          </Button>
+                        </DialogTrigger>
+
+                        <DialogContent className="sm:max-w-md">
+                          <DialogHeader>
+                            <DialogTitle className="text-aviation-grey">
+                              DGCA Estimate
+                            </DialogTitle>
+                            <DialogDescription>
+                              Please fill out the form to access the download.
+                            </DialogDescription>
+                          </DialogHeader>
+
+                          {!popupSubmitted ? (
+                            <form onSubmit={handlePopupSubmit} className="space-y-4">
+                              <div className="space-y-2">
+                                <Label htmlFor="name">Full Name</Label>
+                                <Input
+                                  id="name"
+                                  placeholder="Enter your full name"
+                                  value={popupForm.name}
+                                  onChange={handlePopupChange}
+                                  required
+                                />
+                              </div>
+
+                              <div className="space-y-2">
+                                <Label htmlFor="email">Email Address</Label>
+                                <Input
+                                  id="email"
+                                  type="email"
+                                  placeholder="Enter your email"
+                                  value={popupForm.email}
+                                  onChange={handlePopupChange}
+                                  required
+                                />
+                              </div>
+
+                              <div className="space-y-2">
+                                <Label htmlFor="phone">Phone Number</Label>
+                                <Input
+                                  id="phone"
+                                  type="tel"
+                                  placeholder="Enter your phone number"
+                                  value={popupForm.phone}
+                                  onChange={handlePopupChange}
+                                  required
+                                />
+                              </div>
+
+                              <Button type="submit" variant="aviation" className="w-full">
+                                <Send className="h-4 w-4 mr-2" /> Submit & Download
+                              </Button>
+                            </form>
+                          ) : (
+                            <div className="text-center py-6">
+                              <h3 className="text-lg font-semibold text-sky-primary mb-2">
+                                Thank You!
+                              </h3>
+                              <p className="text-muted-foreground">
+                                Your download will start automatically.
+                              </p>
+                            </div>
+                          )}
+                        </DialogContent>
+                      </Dialog>
+
+                    </div>
+
+                  </CardContent>
+                  <CardContent className="space-y-3">
+                    <div className="flex justify-between items-center p-3 border rounded-lg">
+                      <span>DGCA CPL estimate including ground classes</span>
                       <Dialog open={open} onOpenChange={setOpen}>
                         <DialogTrigger asChild>
                           <Button variant="outline" size="sm">

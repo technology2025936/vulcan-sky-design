@@ -10,11 +10,10 @@ const SingleEngineCPL = () => {
     { icon: Globe, title: "Global Training", description: "India (Ground School) + South Africa (Flight Training)" },
     { icon: Clock, title: "Duration", description: "12-14 months comprehensive program" },
     { icon: Users, title: "Expert Instructors", description: "1-on-1 personalized training" },
-    { icon: Award, title: "Certification", description: "DGCA & SACAA approved" },
+    { icon: Award, title: "Certification", description: "SACAA Approved ATO and DGCA compliant courses" },
   ];
 
   const trainingPath = [
-    { phase: "Ground School", location: "Aviakul, New Delhi", duration: "5 months", items: ["Air Law & Regulations", "Aircraft General Knowledge", "Flight Planning & Performance", "Aviation Meteorology", "Human Performance & Limitations", "Navigation Techniques"] },
     { phase: "PPL Training", location: "Rustenburg Aerodrome, SA", duration: "3-4 months", items: ["Basic flight maneuvers", "Solo flight training", "Hour building exercises", "Cross-country navigation"] },
     { phase: "Advanced Training", location: "Lanseria International Airport", duration: "4-5 months", items: ["Night Rating qualification", "Single-Engine Instrument Rating", "CPL Flight Test preparation", "International airspace operations"] },
   ];
@@ -105,11 +104,8 @@ const SingleEngineCPL = () => {
                     The Single-Engine Instrument CPL programme is tailored for students who wish to build a professional flying career with a solid foundation in single-engine aircraft operations under instrument flight conditions.
                   </p>
                   <p className="text-muted-foreground leading-relaxed">
-                    Training begins at <strong className="text-foreground">Aviakul, New Delhi</strong>, where students complete approximately five months of intensive ground school covering all theoretical subjects required by DGCA.
-                  </p>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Students then move to <strong className="text-foreground">Vulcan Aviation, South Africa</strong>, beginning at Rustenburg Aerodrome for PPL and hour-building, before advancing to Lanseria International Airport for Night Rating, Instrument Rating, and Commercial Pilot Licence skill test.
-                  </p>
+                    Flight training begins at Rustenburg Aerodrome for PPL and hour-building, before advancing to Lanseria International Airport for Night Rating, Instrument Rating, and Commercial Pilot Licence skill test.
+                    </p>
                 </CardContent>
               </Card>
 

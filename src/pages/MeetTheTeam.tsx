@@ -20,7 +20,7 @@ const MeetTheTeam = () => {
     },
     {
       name: "Mr Sachin Meda",
-      role: "Chief Flight Instructor",
+      role: "Chief Flight Instructor and Co-founder",
       experience: ["South African ATPL Flight Instructor Grade 2"],
       specialties: ["Cessna 150", "Cessna 152", "Cessna 172", "Cessna 182", "Diamond DA42", "Jabiru 2 series", "Jabiru 4 series", "Various LSA", "Diamond DA20", "Piper 28R series", "Piper 32 series", "Piper 34 series", "RV6", "Sling"],
       bio: "Highly experienced aviation professional with over 4000+ flying hours",

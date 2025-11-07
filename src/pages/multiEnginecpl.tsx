@@ -38,13 +38,13 @@ const MultiEngineCPL = () => {
   ];
 
   const programFeatures = [
-    "DGCA Compilance Course",
+    "SACAA compliant course",
     "Multi-engine training on Piper Seneca aircraft",
     "Night Rating and Instrument Rating (Multi-Engine)",
     "Training at international controlled airspace",
     "Comprehensive visa and accommodation assistance",
     "Modern fleet with advanced avionics",
-    "Experienced international flight instructors",
+    "Experienced flight instructors",
   ];
 
   return (
@@ -113,10 +113,7 @@ const MultiEngineCPL = () => {
                     The Multi-Engine Instrument CPL programme prepares students for a career in professional aviation, emphasizing multi-engine aircraft handling and advanced instrument flight proficiency.
                   </p>
                   <p>
-                    The journey starts in India at <strong className="text-foreground">Aviakul, New Delhi</strong>, with five months of comprehensive ground school covering all theoretical knowledge requirements.
-                  </p>
-                  <p>
-                    Students then move to South Africa for PPL and hour-building at Rustenburg Aerodrome, followed by advanced multi-engine training at <strong className="text-foreground">Lanseria International Airport</strong>.
+                    Training starts with PPL and hour-building at Rustenburg Aerodrome, followed by night rating and advanced multi-engine training at Lanseria International Airport.
                   </p>
                   <p>
                     Training culminates with Night Rating, Multi-Engine Rating on the Piper Seneca, Multi-Engine Instrument Rating, and the CPL flight test in international controlled airspace.
