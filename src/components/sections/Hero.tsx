@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Play, Phone, Target, Settings, Plane } from "lucide-react";
+import { Link } from "react-router-dom";
 // import heroImage from "@/assets/hero-pilot-woman.jpg";
 import banner from "@/assets/banner.png"
 
@@ -35,17 +36,8 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button
-                variant="vulcan"
-                size="lg"
-                className="text-lg px-10 py-4"
-                onClick={() =>
-                  document
-                    .getElementById("contact")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-              >
-                Start Training
+              <Button variant="vulcan" size="lg" className="text-lg px-10 py-4" asChild>
+                <Link to="/contact">Start Training</Link>
               </Button>
               <a href="https://www.youtube.com/watch?v=UnHtfW5A9dA" target="_blank" rel="noopener noreferrer">
   <Button
