@@ -116,6 +116,11 @@ const Programs = () => {
           <div className="flex items-center justify-center gap-4 text-muted-foreground mb-4">
 
             <Button
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
               className="bg-vulcan-red hover:bg-vulcan-red/90 text-white font-semibold px-8 py-3 rounded-full flex items-center gap-2 group"
             >
               REGISTER NOW
@@ -169,6 +174,11 @@ const Programs = () => {
                 <div className="flex items-left justify-left py-4 gap-4 text-muted-foreground mb-4">
 
                   <Button
+                    onClick={() =>
+                      document
+                        .getElementById("contact")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
                     className="bg-vulcan-red hover:bg-vulcan-red/90 text-white font-semibold px-8 py-3 rounded-full flex items-center gap-2 group"
                   >
                     REGISTER NOW

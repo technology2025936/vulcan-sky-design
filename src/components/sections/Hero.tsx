@@ -35,7 +35,16 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button variant="vulcan" size="lg" className="text-lg px-10 py-4">
+              <Button
+                variant="vulcan"
+                size="lg"
+                className="text-lg px-10 py-4"
+                onClick={() =>
+                  document
+                    .getElementById("contact")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+              >
                 Start Training
               </Button>
               <a href="https://www.youtube.com/watch?v=UnHtfW5A9dA" target="_blank" rel="noopener noreferrer">

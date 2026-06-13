@@ -14,25 +14,43 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Loader2 } from "lucide-react";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogDescription,
-  DialogTrigger,
 } from "@/components/ui/dialog";
+
 const API_URL = import.meta.env.VITE_API_URL;
-import FlightTrainingContract from "@/assets/uploads/Vulcan-Flight-Training-Contract.pdf"
 
-
-
+// Quick Links downloads. Files live in /public/contracts and are served at /contracts.
+const downloads = [
+  {
+    label: "Vulcan Flight Training Contract",
+    filename: "Vulcan Student Contract - 24 November 2025 - website.pdf",
+  },
+  {
+    label: "DGCA CPL estimate excluding ground classes",
+    filename:
+      "CPL - DGCA - Vulcan Aviation - Excl ground classes - March 2026 - installments.pdf",
+  },
+  {
+    label: "DGCA CPL estimate including ground classes",
+    filename:
+      "CPL - DGCA - Vulcan Aviation - Including ground classes - March 2026 - installments.pdf",
+  },
+];
 
 const ContactUs = () => {
-
+  // Download dialog state
   const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState<
+    { label: string; filename: string } | null
+  >(null);
   const [popupSubmitted, setPopupSubmitted] = useState(false);
+  const [downloading, setDownloading] = useState(false);
   const [popupForm, setPopupForm] = useState({
     name: "",
     email: "",
@@ -44,39 +62,36 @@ const ContactUs = () => {
     setPopupForm((prev) => ({ ...prev, [id]: value }));
   };
 
+  const openDownload = (item: { label: string; filename: string }) => {
+    setSelected(item);
+    setOpen(true);
+  };
+
   const handlePopupSubmit = (e: any) => {
     e.preventDefault();
-    setPopupSubmitted(true);
+    setDownloading(true);
 
-    // Optionally trigger file download
     setTimeout(() => {
-      const link = document.createElement("a");
-      link.href = "/downloads/DGCA_Estimate.pdf"; // Replace with actual file path
-      link.download = "DGCA_Estimate.pdf";
-      link.click();
-      setOpen(false);
-      setPopupSubmitted(false);
-      setPopupForm({ name: "", email: "", phone: "" });
-    }, 2000);
+      setDownloading(false);
+      setPopupSubmitted(true);
+
+      if (selected) {
+        const link = document.createElement("a");
+        link.href = `/contracts/${encodeURIComponent(selected.filename)}`;
+        link.download = selected.filename;
+        link.click();
+      }
+
+      setTimeout(() => {
+        setOpen(false);
+        setPopupSubmitted(false);
+        setPopupForm({ name: "", email: "", phone: "" });
+        setSelected(null);
+      }, 2000);
+    }, 1500);
   };
 
-  const TrainingContractSubmit = (e: any) => {
-    e.preventDefault();
-    setPopupSubmitted(true);
-
-    // Optionally trigger file download
-    setTimeout(() => {
-      const link = document.createElement("a");
-      link.href = FlightTrainingContract; // Replace with actual file path
-      link.download = "Vulcan_Flight_Training_Contract.pdf";
-      link.click();
-      setOpen(false);
-      setPopupSubmitted(false);
-      setPopupForm({ name: "", email: "", phone: "" });
-    }, 2000);
-  };
-
-
+  // Aviation enquiry questionnaire state
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -92,6 +107,7 @@ const ContactUs = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: any) => {
     const { id, value } = e.target;
@@ -100,6 +116,7 @@ const ContactUs = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const response = await fetch(`${API_URL}/api/aviation-enquiries`, {
@@ -112,6 +129,7 @@ const ContactUs = () => {
         const error = await response.text();
         console.error("❌ Failed:", response.status, error);
         alert("Form submission failed!");
+        setLoading(false);
         return;
       }
 
@@ -120,6 +138,8 @@ const ContactUs = () => {
     } catch (error) {
       console.error("🚨 Network error:", error);
       alert("Cannot reach backend. Make sure Strapi is running.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -143,58 +163,6 @@ const ContactUs = () => {
         {/* Contact Information */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-            {/* <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-              <Card className="text-center">
-                <CardContent className="pt-6">
-                  <MapPin className="h-8 w-8 text-sky-primary mx-auto mb-4" />
-                  <CardTitle className="text-lg mb-2">Location</CardTitle>
-                  <CardDescription>
-                    1234 Aviation Drive
-                    <br />
-                    Sky Harbor Airport
-                    <br />
-                    Phoenix, AZ 85034
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardContent className="pt-6">
-                  <Phone className="h-8 w-8 text-sky-primary mx-auto mb-4" />
-                  <CardTitle className="text-lg mb-2">Phone</CardTitle>
-                  <CardDescription>
-                    +91 866 0164381
-                    <br />
-                    +27 71 113 7209
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardContent className="pt-6">
-                  <Mail className="h-8 w-8 text-sky-primary mx-auto mb-4" />
-                  <CardTitle className="text-lg mb-2">Email</CardTitle>
-                  <CardDescription>
-                    enquires@flyvulcan.co.za
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardContent className="pt-6">
-                  <Clock className="h-8 w-8 text-sky-primary mx-auto mb-4" />
-                  <CardTitle className="text-lg mb-2">Hours</CardTitle>
-                  <CardDescription>
-                    Mon-Fri: 7:00 AM - 7:00 PM
-                    <br />
-                    Saturday: 8:00 AM - 5:00 PM
-                    <br />
-                    Sunday: 9:00 AM - 4:00 PM
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </div> */}
-
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Questionnaire Form */}
               <Card>
@@ -383,58 +351,27 @@ const ContactUs = () => {
                         size="lg"
                         className="w-full"
                         type="submit"
+                        disabled={loading}
                       >
-                        <Send className="h-4 w-4 mr-2" />
-                        Submit Form
+                        {loading ? (
+                          <>
+                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                            Submitting...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="h-4 w-4 mr-2" />
+                            Submit Form
+                          </>
+                        )}
                       </Button>
                     </form>
                   )}
                 </CardContent>
               </Card>
 
-
-              {/* Map and Additional Info */}
+              {/* Contact Info + Quick Links */}
               <div className="space-y-8">
-                {/* <Card>
-                  <CardHeader>
-                    <CardTitle className="text-aviation-grey">
-                      Visit Our Facility
-                    </CardTitle>
-                    <CardDescription>
-                      Located at Sky Harbor Airport with easy access to runways
-                      and modern training facilities
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="aspect-video bg-gradient-subtle rounded-lg flex items-center justify-center mb-6">
-                      <div className="text-center">
-                        <MapPin className="h-12 w-12 text-sky-primary mx-auto mb-4" />
-                        <p className="text-muted-foreground">
-                          Interactive Map Coming Soon
-                        </p>
-                      </div>
-                    </div>
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="font-semibold text-aviation-grey mb-2">
-                          Parking
-                        </h4>
-                        <p className="text-muted-foreground text-sm">
-                          Free parking available in our dedicated lot
-                        </p>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-aviation-grey mb-2">
-                          Public Transport
-                        </h4>
-                        <p className="text-muted-foreground text-sm">
-                          Accessible via Sky Harbor shuttle and bus routes
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card> */}
-
                 <Card className="p-2">
                   <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
                     <Card className="text-center">
@@ -489,246 +426,113 @@ const ContactUs = () => {
                       </CardContent>
                     </Card>
                   </div>
+
                   <CardHeader>
                     <CardTitle className="text-aviation-grey">
                       Quick Links
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">
-                    <div className="flex justify-between items-center p-3 border rounded-lg">
-                      <span>DGCA CPL estimate excluding ground classes</span>
-                      <Dialog open={open} onOpenChange={setOpen}>
-                        <DialogTrigger asChild>
-                          <Button variant="outline" size="sm">
-                            Download Now
-                          </Button>
-                        </DialogTrigger>
-
-                        <DialogContent className="sm:max-w-md">
-                          <DialogHeader>
-                            <DialogTitle className="text-aviation-grey">
-                              DGCA Estimate
-                            </DialogTitle>
-                            <DialogDescription>
-                              Please fill out the form to access the download.
-                            </DialogDescription>
-                          </DialogHeader>
-
-                          {!popupSubmitted ? (
-                            <form onSubmit={handlePopupSubmit} className="space-y-4">
-                              <div className="space-y-2">
-                                <Label htmlFor="name">Full Name</Label>
-                                <Input
-                                  id="name"
-                                  placeholder="Enter your full name"
-                                  value={popupForm.name}
-                                  onChange={handlePopupChange}
-                                  required
-                                />
-                              </div>
-
-                              <div className="space-y-2">
-                                <Label htmlFor="email">Email Address</Label>
-                                <Input
-                                  id="email"
-                                  type="email"
-                                  placeholder="Enter your email"
-                                  value={popupForm.email}
-                                  onChange={handlePopupChange}
-                                  required
-                                />
-                              </div>
-
-                              <div className="space-y-2">
-                                <Label htmlFor="phone">Phone Number</Label>
-                                <Input
-                                  id="phone"
-                                  type="tel"
-                                  placeholder="Enter your phone number"
-                                  value={popupForm.phone}
-                                  onChange={handlePopupChange}
-                                  required
-                                />
-                              </div>
-
-                              <Button type="submit" variant="aviation" className="w-full">
-                                <Send className="h-4 w-4 mr-2" /> Submit & Download
-                              </Button>
-                            </form>
-                          ) : (
-                            <div className="text-center py-6">
-                              <h3 className="text-lg font-semibold text-sky-primary mb-2">
-                                Thank You!
-                              </h3>
-                              <p className="text-muted-foreground">
-                                Your download will start automatically.
-                              </p>
-                            </div>
-                          )}
-                        </DialogContent>
-                      </Dialog>
-
-                    </div>
-
-                  </CardContent>
-                  <CardContent className="space-y-3">
-                    <div className="flex justify-between items-center p-3 border rounded-lg">
-                      <span>DGCA CPL estimate including ground classes</span>
-                      <Dialog open={open} onOpenChange={setOpen}>
-                        <DialogTrigger asChild>
-                          <Button variant="outline" size="sm">
-                            Download Now
-                          </Button>
-                        </DialogTrigger>
-
-                        <DialogContent className="sm:max-w-md">
-                          <DialogHeader>
-                            <DialogTitle className="text-aviation-grey">
-                              DGCA Estimate
-                            </DialogTitle>
-                            <DialogDescription>
-                              Please fill out the form to access the download.
-                            </DialogDescription>
-                          </DialogHeader>
-
-                          {!popupSubmitted ? (
-                            <form onSubmit={handlePopupSubmit} className="space-y-4">
-                              <div className="space-y-2">
-                                <Label htmlFor="name">Full Name</Label>
-                                <Input
-                                  id="name"
-                                  placeholder="Enter your full name"
-                                  value={popupForm.name}
-                                  onChange={handlePopupChange}
-                                  required
-                                />
-                              </div>
-
-                              <div className="space-y-2">
-                                <Label htmlFor="email">Email Address</Label>
-                                <Input
-                                  id="email"
-                                  type="email"
-                                  placeholder="Enter your email"
-                                  value={popupForm.email}
-                                  onChange={handlePopupChange}
-                                  required
-                                />
-                              </div>
-
-                              <div className="space-y-2">
-                                <Label htmlFor="phone">Phone Number</Label>
-                                <Input
-                                  id="phone"
-                                  type="tel"
-                                  placeholder="Enter your phone number"
-                                  value={popupForm.phone}
-                                  onChange={handlePopupChange}
-                                  required
-                                />
-                              </div>
-
-                              <Button type="submit" variant="aviation" className="w-full">
-                                <Send className="h-4 w-4 mr-2" /> Submit & Download
-                              </Button>
-                            </form>
-                          ) : (
-                            <div className="text-center py-6">
-                              <h3 className="text-lg font-semibold text-sky-primary mb-2">
-                                Thank You!
-                              </h3>
-                              <p className="text-muted-foreground">
-                                Your download will start automatically.
-                              </p>
-                            </div>
-                          )}
-                        </DialogContent>
-                      </Dialog>
-
-                    </div>
-
-                  </CardContent>
-                  <CardContent className="space-y-3">
-                    <div className="flex justify-between items-center p-3 border rounded-lg">
-                      <span>Vulcan Flight Training Contract</span>
-                      <Dialog open={open} onOpenChange={setOpen}>
-                        <DialogTrigger asChild>
-                          <Button variant="outline" size="sm">
-                            Download Now
-                          </Button>
-                        </DialogTrigger>
-
-                        <DialogContent className="sm:max-w-md">
-                          <DialogHeader>
-                            <DialogTitle className="text-aviation-grey">
-                              DGCA Estimate
-                            </DialogTitle>
-                            <DialogDescription>
-                              Please fill out the form to access the download.
-                            </DialogDescription>
-                          </DialogHeader>
-
-                          {!popupSubmitted ? (
-                            <form onSubmit={TrainingContractSubmit} className="space-y-4">
-                              <div className="space-y-2">
-                                <Label htmlFor="name">Full Name</Label>
-                                <Input
-                                  id="name"
-                                  placeholder="Enter your full name"
-                                  value={popupForm.name}
-                                  onChange={handlePopupChange}
-                                  required
-                                />
-                              </div>
-
-                              <div className="space-y-2">
-                                <Label htmlFor="email">Email Address</Label>
-                                <Input
-                                  id="email"
-                                  type="email"
-                                  placeholder="Enter your email"
-                                  value={popupForm.email}
-                                  onChange={handlePopupChange}
-                                  required
-                                />
-                              </div>
-
-                              <div className="space-y-2">
-                                <Label htmlFor="phone">Phone Number</Label>
-                                <Input
-                                  id="phone"
-                                  type="tel"
-                                  placeholder="Enter your phone number"
-                                  value={popupForm.phone}
-                                  onChange={handlePopupChange}
-                                  required
-                                />
-                              </div>
-
-                              <Button type="submit" variant="aviation" className="w-full">
-                                <Send className="h-4 w-4 mr-2" /> Submit & Download
-                              </Button>
-                            </form>
-                          ) : (
-                            <div className="text-center py-6">
-                              <h3 className="text-lg font-semibold text-sky-primary mb-2">
-                                Thank You!
-                              </h3>
-                              <p className="text-muted-foreground">
-                                Your download will start automatically.
-                              </p>
-                            </div>
-                          )}
-                        </DialogContent>
-                      </Dialog>
-
-                    </div>
-
+                    {downloads.map((item) => (
+                      <div
+                        key={item.filename}
+                        className="flex justify-between items-center p-3 border rounded-lg"
+                      >
+                        <span>{item.label}</span>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => openDownload(item)}
+                        >
+                          Download Now
+                        </Button>
+                      </div>
+                    ))}
                   </CardContent>
                 </Card>
               </div>
             </div>
           </div>
+
+          {/* Shared Download Dialog */}
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogContent className="sm:max-w-md">
+              <DialogHeader>
+                <DialogTitle className="text-aviation-grey">
+                  {selected?.label}
+                </DialogTitle>
+                <DialogDescription>
+                  Please fill out the form to access the download.
+                </DialogDescription>
+              </DialogHeader>
+
+              {popupSubmitted ? (
+                <div className="text-center py-6">
+                  <h3 className="text-lg font-semibold text-sky-primary mb-2">
+                    Thank You!
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Your download will start automatically.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handlePopupSubmit} className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Full Name</Label>
+                    <Input
+                      id="name"
+                      placeholder="Enter your full name"
+                      value={popupForm.name}
+                      onChange={handlePopupChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email Address</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="Enter your email"
+                      value={popupForm.email}
+                      onChange={handlePopupChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">Phone Number</Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      placeholder="Enter your phone number"
+                      value={popupForm.phone}
+                      onChange={handlePopupChange}
+                      required
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    variant="aviation"
+                    className="w-full"
+                    disabled={downloading}
+                  >
+                    {downloading ? (
+                      <>
+                        <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="h-4 w-4 mr-2" /> Submit & Download
+                      </>
+                    )}
+                  </Button>
+                </form>
+              )}
+            </DialogContent>
+          </Dialog>
         </section>
 
         {/* FAQ Section */}
