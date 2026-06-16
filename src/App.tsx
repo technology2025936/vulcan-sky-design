@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { captureAttribution } from "@/lib/attribution";
 import Index from "./pages/Index";
 import AboutUs from "./pages/AboutUs";
 import CoursesOnOffer from "./pages/CoursesOnOffer";
@@ -16,6 +17,10 @@ import CommercialPilotLicense from "./pages/commercialPilotLicense";
 import SacaaRequirements from "./pages/SacaaRequirements";
 
 const queryClient = new QueryClient();
+
+// Record marketing attribution (UTMs, ad click IDs, referrer) from the entry
+// URL as early as possible, before any navigation can drop the query string.
+captureAttribution();
 
 // Reset scroll to the top of the page on every route change so navigating
 // to a page (e.g. /contact) never lands mid-page (was showing the FAQ).

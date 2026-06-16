@@ -23,6 +23,8 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
+import { sendToSheets } from "@/lib/leads";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 // Quick Links downloads. Files live in /public/contracts and are served at /contracts.
@@ -71,6 +73,13 @@ const ContactUs = () => {
     e.preventDefault();
     setDownloading(true);
 
+    // Capture the download lead (with which file was requested) to Sheets.
+    sendToSheets(`Download — ${selected?.label ?? "Document"}`, {
+      ...popupForm,
+      requested_label: selected?.label ?? "",
+      requested_file: selected?.filename ?? "",
+    });
+
     setTimeout(() => {
       setDownloading(false);
       setPopupSubmitted(true);
@@ -117,6 +126,9 @@ const ContactUs = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
+
+    // Log every entry to Google Sheets with attribution (non-blocking).
+    sendToSheets("Contact Page Enquiry", formData);
 
     try {
       const response = await fetch(`${API_URL}/api/aviation-enquiries`, {

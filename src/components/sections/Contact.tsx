@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { sendToSheets } from "@/lib/leads";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const Contact = () => {
@@ -40,6 +41,9 @@ const Contact = () => {
   const handleSubmit = async (e: any) => {
     console.log("API_URL =", API_URL);
   e.preventDefault();
+
+  // Log every entry to Google Sheets with attribution (non-blocking).
+  sendToSheets("Home Page Enquiry", formData);
 
   try {
     const response = await fetch(`${API_URL}/api/aviation-enquiries`, {
