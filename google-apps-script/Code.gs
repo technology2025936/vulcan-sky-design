@@ -43,9 +43,39 @@ function doPost(e) {
   }
 }
 
-// Simple health check so you can open the /exec URL in a browser.
+// Health check + diagnostics. Open the /exec URL in a browser to see whether
+// the script can reach your sheet and how many rows it has.
 function doGet() {
-  return jsonOutput_({ result: "ok", message: "Vulcan form intake is live" });
+  try {
+    var ss = SPREADSHEET_ID
+      ? SpreadsheetApp.openById(SPREADSHEET_ID)
+      : SpreadsheetApp.getActiveSpreadsheet();
+    if (!ss) {
+      return jsonOutput_({
+        result: "error",
+        message:
+          "Cannot find spreadsheet. SPREADSHEET_ID is empty and there is no " +
+          "active spreadsheet (this is a standalone script).",
+        spreadsheet_id_set: false,
+      });
+    }
+    var sheet = ss.getSheetByName(SHEET_NAME);
+    return jsonOutput_({
+      result: "ok",
+      message: "Vulcan form intake is live",
+      spreadsheet_id_set: !!SPREADSHEET_ID,
+      spreadsheet_name: ss.getName(),
+      leads_tab: SHEET_NAME,
+      leads_tab_exists: !!sheet,
+      rows_including_header: sheet ? sheet.getLastRow() : 0,
+    });
+  } catch (err) {
+    return jsonOutput_({
+      result: "error",
+      message: String(err),
+      spreadsheet_id_set: !!SPREADSHEET_ID,
+    });
+  }
 }
 
 function appendRow_(data) {
