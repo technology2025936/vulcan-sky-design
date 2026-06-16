@@ -6,15 +6,34 @@ with marketing attribution and page/device context.
 
 ## One-time setup
 
-1. Create a new Google Sheet (or open an existing one). This is where entries land.
-2. **Extensions → Apps Script**. Delete the default `myFunction` stub and paste
-   the contents of [`Code.gs`](./Code.gs). Save.
-3. **Deploy → New deployment → Web app**:
-   - **Execute as:** Me
-   - **Who has access:** Anyone
-4. Authorize the script when prompted (it only touches this spreadsheet).
-5. Copy the **Web app URL** (it ends in `/exec`).
-6. In the site repo, set it in `.env`:
+You can use **either** path below. The standalone path is easiest if
+"Extensions → Apps Script" isn't available to you.
+
+### Path A — Standalone script (script.google.com)
+
+1. Open your Google Sheet. Copy its **ID** from the URL:
+   `https://docs.google.com/spreadsheets/d/`**`<THIS_IS_THE_ID>`**`/edit`
+2. Go to **script.google.com → New project**. Delete the stub, paste
+   [`Code.gs`](./Code.gs).
+3. At the top of the script, set `var SPREADSHEET_ID = "<paste the ID>";`
+4. **Deploy → New deployment → Web app** — Execute as: **Me**, Who has access:
+   **Anyone**. Authorize when prompted.
+5. Copy the **Web app URL** (ends in `/exec`).
+
+### Path B — Bound script (from inside the Sheet)
+
+1. In the Sheet: **Extensions → Apps Script**. Paste [`Code.gs`](./Code.gs).
+   Leave `SPREADSHEET_ID = ""` (it uses the active sheet).
+2. **Deploy → New deployment → Web app** (same settings as above), authorize,
+   copy the `/exec` URL.
+
+> Don't see **Extensions → Apps Script**? The file is probably an uploaded
+> `.xlsx`, not a native Google Sheet. Do **File → Save as Google Sheets** first,
+> or just use Path A.
+
+### Then, for either path
+
+6. In the site repo, set the URL in `.env`:
    ```
    VITE_SHEETS_WEBHOOK_URL=https://script.google.com/macros/s/XXXXXXXX/exec
    ```
@@ -22,6 +41,14 @@ with marketing attribution and page/device context.
 
 Open the `/exec` URL in a browser — it should return
 `{"result":"ok"...}`. That confirms the endpoint is live.
+
+### About the sheet name
+
+- `SPREADSHEET_ID` points to your spreadsheet **file** — its name (e.g.
+  "Vulcan Lead Sheet") doesn't matter.
+- Entries are written to a **tab** named `Leads`, created automatically. If you
+  want them in a tab you already renamed, set `var SHEET_NAME = "Your Tab Name";`
+  to match.
 
 ## What gets captured (per row)
 

@@ -6,20 +6,31 @@
  * site sends (form fields + UTMs + attribution + device/page context) is
  * captured without editing this script.
  *
- * SETUP (one time):
- *   1. Create / open a Google Sheet.
- *   2. Extensions ▸ Apps Script. Delete any boilerplate, paste this file.
- *   3. Deploy ▸ New deployment ▸ type "Web app".
+ * SETUP (one time) — works for a STANDALONE script (made at script.google.com):
+ *   1. Open your Google Sheet and copy its ID from the URL:
+ *        https://docs.google.com/spreadsheets/d/<THIS_IS_THE_ID>/edit
+ *   2. Paste that ID into SPREADSHEET_ID below.
+ *   3. In the script editor, paste this whole file, then Save.
+ *   4. Deploy ▸ New deployment ▸ type "Web app".
  *        - Description: Vulcan form intake
  *        - Execute as:  Me
  *        - Who has access: Anyone
- *   4. Authorize when prompted. Copy the Web app URL (ends in /exec).
- *   5. Put that URL in the site's VITE_SHEETS_WEBHOOK_URL env var and rebuild.
+ *   5. Authorize when prompted. Copy the Web app URL (ends in /exec).
+ *   6. Put that URL in the site's VITE_SHEETS_WEBHOOK_URL env var and rebuild.
+ *
+ * (If instead you opened the script from inside the Sheet via
+ *  Extensions ▸ Apps Script, you can leave SPREADSHEET_ID blank — it falls
+ *  back to the active spreadsheet.)
  *
  * After changing this script, redeploy with: Deploy ▸ Manage deployments ▸
  * (edit) ▸ Version: New version ▸ Deploy. The /exec URL stays the same.
  */
 
+// Paste your spreadsheet ID here (from the Sheet URL). Required for a
+// standalone script; optional for a Sheet-bound script.
+var SPREADSHEET_ID = "";
+
+// The tab (worksheet) entries are written to. Auto-created if it doesn't exist.
 var SHEET_NAME = "Leads";
 
 function doPost(e) {
@@ -73,7 +84,15 @@ function appendRow_(data) {
 }
 
 function getSheet_() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var ss = SPREADSHEET_ID
+    ? SpreadsheetApp.openById(SPREADSHEET_ID)
+    : SpreadsheetApp.getActiveSpreadsheet();
+  if (!ss) {
+    throw new Error(
+      "No spreadsheet. Set SPREADSHEET_ID (standalone script) or open the " +
+        "script from inside the Sheet (Extensions > Apps Script)."
+    );
+  }
   var sheet = ss.getSheetByName(SHEET_NAME);
   if (!sheet) sheet = ss.insertSheet(SHEET_NAME);
   return sheet;
