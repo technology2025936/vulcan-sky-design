@@ -28,7 +28,7 @@
 
 // Paste your spreadsheet ID here (from the Sheet URL). Required for a
 // standalone script; optional for a Sheet-bound script.
-var SPREADSHEET_ID = "";
+var SPREADSHEET_ID = "1i022gt5s-VRKkGZmdcvvSy9qU3G3CsXWrT0M9pJ0gIs";
 
 // The tab (worksheet) entries are written to. Auto-created if it doesn't exist.
 var SHEET_NAME = "Leads";
