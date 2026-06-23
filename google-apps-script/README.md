@@ -67,6 +67,20 @@ site sends, so nothing here needs editing when fields change. Current columns:
 > Each form only sends its own fields, so unrelated columns stay blank for that
 > row — expected.
 
+## Email notifications
+
+Every submission is also emailed to the address in `NOTIFY_EMAIL`
+(currently `pilot360@flyvulcan.co.za`). The email subject is
+`New <form name> — <name>`, the body lists all submitted fields, and **Reply-To**
+is set to the lead's email so you can reply to them directly.
+
+- Change the recipient by editing `NOTIFY_EMAIL` in `Code.gs` (comma-separate
+  for several: `"a@x.com,b@x.com"`). Leave it blank to turn email off.
+- Email sending needs an extra permission. **After adding/redeploying this
+  change, Google will ask you to re-authorize** — approve it
+  (Advanced ▸ Go to project ▸ Allow), otherwise rows still save but no email goes out.
+- Daily send limits: ~100/day on a personal Gmail, ~1,500/day on Google Workspace.
+
 ## Notes
 
 - Entries are sent **best-effort and non-blocking**. Strapi remains the primary

@@ -22,8 +22,13 @@
  *  Extensions ▸ Apps Script, you can leave SPREADSHEET_ID blank — it falls
  *  back to the active spreadsheet.)
  *
+ * Every submission is also emailed to NOTIFY_EMAIL below.
+ *
  * After changing this script, redeploy with: Deploy ▸ Manage deployments ▸
  * (edit) ▸ Version: New version ▸ Deploy. The /exec URL stays the same.
+ * NOTE: adding email sending introduces a new permission — the first deploy/run
+ * after this change will ask you to re-authorize. Approve it (Advanced ▸ Go to
+ * project ▸ Allow) or emails won't send.
  */
 
 // Paste your spreadsheet ID here (from the Sheet URL). Required for a
@@ -33,10 +38,20 @@ var SPREADSHEET_ID = "1i022gt5s-VRKkGZmdcvvSy9qU3G3CsXWrT0M9pJ0gIs";
 // The tab (worksheet) entries are written to. Auto-created if it doesn't exist.
 var SHEET_NAME = "Leads";
 
+// Every submission is emailed here. Use a comma-separated list for multiple
+// recipients (e.g. "a@x.com,b@x.com"). Leave blank to disable email.
+var NOTIFY_EMAIL = "pilot360@flyvulcan.co.za";
+
 function doPost(e) {
   try {
     var data = JSON.parse(e.postData.contents);
     appendRow_(data);
+    // Email is secondary — never let a mail failure fail the submission.
+    try {
+      sendNotification_(data);
+    } catch (mailErr) {
+      // swallow; the row is already saved to the sheet
+    }
     return jsonOutput_({ result: "success" });
   } catch (err) {
     return jsonOutput_({ result: "error", message: String(err) });
@@ -126,6 +141,63 @@ function getSheet_() {
   var sheet = ss.getSheetByName(SHEET_NAME);
   if (!sheet) sheet = ss.insertSheet(SHEET_NAME);
   return sheet;
+}
+
+// Emails a readable summary of the submission to NOTIFY_EMAIL.
+function sendNotification_(data) {
+  if (!NOTIFY_EMAIL) return;
+
+  var formName = data.form_name || "Website Form";
+  var who = data.fullName || data.name || data.email || "New lead";
+  var subject = "New " + formName + " — " + who;
+
+  // Show the human-facing contact fields first, then everything else.
+  var priority = [
+    "form_name",
+    "fullName",
+    "name",
+    "email",
+    "phone",
+    "requested_label",
+    "requested_file",
+  ];
+
+  var lines = [];
+  priority.forEach(function (key) {
+    if (data[key] !== undefined && data[key] !== null && data[key] !== "") {
+      lines.push(labelize_(key) + ": " + data[key]);
+    }
+  });
+  Object.keys(data).forEach(function (key) {
+    if (
+      priority.indexOf(key) === -1 &&
+      data[key] !== undefined &&
+      data[key] !== null &&
+      data[key] !== ""
+    ) {
+      lines.push(labelize_(key) + ": " + data[key]);
+    }
+  });
+
+  var body =
+    "A new submission came in from the Vulcan Aviation website.\n\n" +
+    lines.join("\n") +
+    "\n\n— Saved to the Leads sheet automatically.";
+
+  var options = { name: "Vulcan Aviation Website" };
+  // Let the recipient reply straight to the lead.
+  if (data.email && /^\S+@\S+\.\S+$/.test(String(data.email))) {
+    options.replyTo = String(data.email);
+  }
+
+  MailApp.sendEmail(NOTIFY_EMAIL, subject, body, options);
+}
+
+// "first_utm_source" -> "First Utm Source"
+function labelize_(key) {
+  return key.replace(/_/g, " ").replace(/\b\w/g, function (c) {
+    return c.toUpperCase();
+  });
 }
 
 function jsonOutput_(obj) {
